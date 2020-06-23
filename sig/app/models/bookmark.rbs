@@ -1,0 +1,20 @@
+class Bookmark < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Bookmark, Bookmark::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor status_id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+  def status: () -> Status
+end
+
+class Bookmark::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Bookmark]
+  include Enumerable[Bookmark, self]
+end
+
+class Bookmark::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

@@ -1,0 +1,37 @@
+class Report < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Report, Report::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor status_ids (): Integer
+  attr_accessor comment (): String
+  attr_accessor action_taken (): TrueClass | FalseClass
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor account_id (): Integer
+  attr_accessor action_taken_by_account_id (): Integer
+  attr_accessor target_account_id (): Integer
+  attr_accessor assigned_account_id (): Integer
+  attr_accessor uri (): String
+  def notes: () -> ReportNote::ActiveRecord_Associations_CollectionProxy
+
+  def account: () -> Account
+  def target_account: () -> Account
+  def action_taken_by_account: () -> Account
+  def assigned_account: () -> Account
+
+  def self.unresolved: () -> Report::ActiveRecord_Relation
+  def self.resolved: () -> Report::ActiveRecord_Relation
+  def self.with_accounts: () -> Report::ActiveRecord_Relation
+end
+
+class Report::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Report]
+  include Enumerable[Report, self]
+
+  def unresolved: () -> Report::ActiveRecord_Relation
+  def resolved: () -> Report::ActiveRecord_Relation
+  def with_accounts: () -> Report::ActiveRecord_Relation
+end
+
+class Report::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

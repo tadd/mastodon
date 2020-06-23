@@ -1,0 +1,20 @@
+class ListAccount < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[ListAccount, ListAccount::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor list_id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor follow_id (): Integer
+
+  def list: () -> List
+  def account: () -> Account
+  def follow: () -> Follow
+end
+
+class ListAccount::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[ListAccount]
+  include Enumerable[ListAccount, self]
+end
+
+class ListAccount::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

@@ -1,0 +1,20 @@
+class SystemKey < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[SystemKey, SystemKey::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor key (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def self.expired: (?untyped) -> SystemKey::ActiveRecord_Relation
+end
+
+class SystemKey::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[SystemKey]
+  include Enumerable[SystemKey, self]
+
+  def expired: (?untyped) -> SystemKey::ActiveRecord_Relation
+end
+
+class SystemKey::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

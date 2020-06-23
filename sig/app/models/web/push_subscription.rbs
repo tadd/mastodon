@@ -1,0 +1,25 @@
+class Web::PushSubscription < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Web::PushSubscription, Web::PushSubscription::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor endpoint (): String
+  attr_accessor key_p256dh (): String
+  attr_accessor key_auth (): String
+  attr_accessor data (): untyped
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor access_token_id (): Integer
+  attr_accessor user_id (): Integer
+
+  def session_activation: () -> SessionActivation
+  def user: () -> User
+  def access_token: () -> Doorkeeper::AccessToken
+end
+
+class Web::PushSubscription::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Web::PushSubscription]
+  include Enumerable[Web::PushSubscription, self]
+end
+
+class Web::PushSubscription::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

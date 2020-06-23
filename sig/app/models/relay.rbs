@@ -1,0 +1,22 @@
+class Relay < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Relay, Relay::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor inbox_url (): String
+  attr_accessor follow_activity_id (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor state (): Integer
+
+  def self.enabled: () -> Relay::ActiveRecord_Relation
+end
+
+class Relay::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Relay]
+  include Enumerable[Relay, self]
+
+  def enabled: () -> Relay::ActiveRecord_Relation
+end
+
+class Relay::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

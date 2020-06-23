@@ -1,0 +1,17 @@
+class Conversation < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Conversation, Conversation::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor uri (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  def statuses: () -> Status::ActiveRecord_Associations_CollectionProxy
+end
+
+class Conversation::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Conversation]
+  include Enumerable[Conversation, self]
+end
+
+class Conversation::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

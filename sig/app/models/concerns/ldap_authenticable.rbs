@@ -1,0 +1,9 @@
+module LdapAuthenticable
+  extend ActiveSupport::Concern
+
+  def authenticate_with_ldap: (?::Hash[untyped, untyped] params) -> untyped
+
+  def ldap_get_user: (?::Hash[untyped, untyped] attributes) -> untyped
+
+  def ldap_options: () -> untyped
+end

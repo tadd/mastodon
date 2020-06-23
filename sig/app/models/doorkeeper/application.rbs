@@ -1,0 +1,31 @@
+class Doorkeeper::Application < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Doorkeeper::Application, Doorkeeper::Application::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor name (): String
+  attr_accessor uid (): String
+  attr_accessor secret (): String
+  attr_accessor redirect_uri (): String
+  attr_accessor scopes (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor superapp (): TrueClass | FalseClass
+  attr_accessor website (): String
+  attr_accessor owner_type (): String
+  attr_accessor owner_id (): Integer
+  attr_accessor confidential (): TrueClass | FalseClass
+  def access_grants: () -> Doorkeeper::AccessGrant::ActiveRecord_Associations_CollectionProxy
+  def access_tokens: () -> Doorkeeper::AccessToken::ActiveRecord_Associations_CollectionProxy
+  def authorized_tokens: () -> Doorkeeper::AccessToken::ActiveRecord_Associations_CollectionProxy
+  def authorized_applications: () -> Doorkeeper::Application::ActiveRecord_Associations_CollectionProxy
+
+  def owner: () -> untyped
+end
+
+class Doorkeeper::Application::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Doorkeeper::Application]
+  include Enumerable[Doorkeeper::Application, self]
+end
+
+class Doorkeeper::Application::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

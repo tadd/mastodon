@@ -1,0 +1,20 @@
+class StatusPin < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[StatusPin, StatusPin::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor status_id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+  def status: () -> Status
+end
+
+class StatusPin::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[StatusPin]
+  include Enumerable[StatusPin, self]
+end
+
+class StatusPin::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

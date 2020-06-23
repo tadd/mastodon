@@ -1,0 +1,25 @@
+class ReportNote < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[ReportNote, ReportNote::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor content (): String
+  attr_accessor report_id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+  def report: () -> Report
+
+  def self.latest: () -> ReportNote::ActiveRecord_Relation
+end
+
+class ReportNote::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[ReportNote]
+  include Enumerable[ReportNote, self]
+
+  def latest: () -> ReportNote::ActiveRecord_Relation
+end
+
+class ReportNote::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

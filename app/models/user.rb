@@ -304,6 +304,7 @@ class User < ApplicationRecord
 
   def recent_ips
     @recent_ips ||= begin
+      # @type var ary: Array[[Time, IPAddr]]
       arr = []
 
       session_activations.each do |session_activation|
@@ -379,6 +380,7 @@ class User < ApplicationRecord
 
   def sanitize_languages
     return if chosen_languages.nil?
+    # @type var chosen_languages: Array[String]
     chosen_languages.reject!(&:blank?)
     self.chosen_languages = nil if chosen_languages.empty?
   end
