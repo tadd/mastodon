@@ -1,0 +1,42 @@
+class CustomEmoji < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[CustomEmoji, CustomEmoji::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor shortcode (): String
+  attr_accessor domain (): String
+  attr_accessor image_file_name (): String
+  attr_accessor image_content_type (): String
+  attr_accessor image_file_size (): Integer
+  attr_accessor image_updated_at (): Time
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor disabled (): TrueClass | FalseClass
+  attr_accessor uri (): String
+  attr_accessor image_remote_url (): String
+  attr_accessor visible_in_picker (): TrueClass | FalseClass
+  attr_accessor category_id (): Integer
+  attr_accessor image_storage_schema_version (): Integer
+
+  def local_counterpart: () -> CustomEmoji
+  def category: () -> CustomEmojiCategory
+
+  def self.local: () -> CustomEmoji::ActiveRecord_Relation
+  def self.remote: () -> CustomEmoji::ActiveRecord_Relation
+  def self.alphabetic: () -> CustomEmoji::ActiveRecord_Relation
+  def self.by_domain_and_subdomains: (untyped) -> CustomEmoji::ActiveRecord_Relation
+  def self.listed: () -> CustomEmoji::ActiveRecord_Relation
+end
+
+class CustomEmoji::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[CustomEmoji]
+  include Enumerable[CustomEmoji, self]
+
+  def local: () -> CustomEmoji::ActiveRecord_Relation
+  def remote: () -> CustomEmoji::ActiveRecord_Relation
+  def alphabetic: () -> CustomEmoji::ActiveRecord_Relation
+  def by_domain_and_subdomains: (untyped) -> CustomEmoji::ActiveRecord_Relation
+  def listed: () -> CustomEmoji::ActiveRecord_Relation
+end
+
+class CustomEmoji::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

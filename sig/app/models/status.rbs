@@ -1,0 +1,79 @@
+class Status < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Status, Status::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor uri (): String
+  attr_accessor text (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor in_reply_to_id (): Integer
+  attr_accessor reblog_of_id (): Integer
+  attr_accessor url (): String
+  attr_accessor sensitive (): TrueClass | FalseClass
+  attr_accessor visibility (): Integer
+  attr_accessor spoiler_text (): String
+  attr_accessor reply (): TrueClass | FalseClass
+  attr_accessor language (): String
+  attr_accessor conversation_id (): Integer
+  attr_accessor local (): TrueClass | FalseClass
+  attr_accessor account_id (): Integer
+  attr_accessor application_id (): Integer
+  attr_accessor in_reply_to_account_id (): Integer
+  attr_accessor poll_id (): Integer
+  attr_accessor deleted_at (): Time
+  def favourites: () -> Favourite::ActiveRecord_Associations_CollectionProxy
+  def bookmarks: () -> Bookmark::ActiveRecord_Associations_CollectionProxy
+  def reblogs: () -> Status::ActiveRecord_Associations_CollectionProxy
+  def replies: () -> Status::ActiveRecord_Associations_CollectionProxy
+  def mentions: () -> Mention::ActiveRecord_Associations_CollectionProxy
+  def active_mentions: () -> Mention::ActiveRecord_Associations_CollectionProxy
+  def media_attachments: () -> MediaAttachment::ActiveRecord_Associations_CollectionProxy
+  def notification: () -> Notification
+  def status_stat: () -> StatusStat
+  def poll: () -> Poll
+  def application: () -> Doorkeeper::Application
+  def account: () -> Account
+  def in_reply_to_account: () -> Account
+  def conversation: () -> Conversation
+  def preloadable_poll: () -> Poll
+  def thread: () -> Status
+  def reblog: () -> Status
+
+  def self.recent: () -> Status::ActiveRecord_Relation
+  def self.remote: () -> Status::ActiveRecord_Relation
+  def self.local: () -> Status::ActiveRecord_Relation
+  def self.with_accounts: (untyped) -> Status::ActiveRecord_Relation
+  def self.without_replies: () -> Status::ActiveRecord_Relation
+  def self.without_reblogs: () -> Status::ActiveRecord_Relation
+  def self.with_public_visibility: () -> Status::ActiveRecord_Relation
+  def self.tagged_with: (untyped) -> Status::ActiveRecord_Relation
+  def self.excluding_silenced_accounts: () -> Status::ActiveRecord_Relation
+  def self.including_silenced_accounts: () -> Status::ActiveRecord_Relation
+  def self.not_excluded_by_account: (untyped) -> Status::ActiveRecord_Relation
+  def self.not_domain_blocked_by_account: (untyped) -> Status::ActiveRecord_Relation
+  def self.tagged_with_all: (untyped) -> Status::ActiveRecord_Relation
+  def self.tagged_with_none: (untyped) -> Status::ActiveRecord_Relation
+end
+
+class Status::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Status]
+  include Enumerable[Status, self]
+
+  def recent: () -> Status::ActiveRecord_Relation
+  def remote: () -> Status::ActiveRecord_Relation
+  def local: () -> Status::ActiveRecord_Relation
+  def with_accounts: (untyped) -> Status::ActiveRecord_Relation
+  def without_replies: () -> Status::ActiveRecord_Relation
+  def without_reblogs: () -> Status::ActiveRecord_Relation
+  def with_public_visibility: () -> Status::ActiveRecord_Relation
+  def tagged_with: (untyped) -> Status::ActiveRecord_Relation
+  def excluding_silenced_accounts: () -> Status::ActiveRecord_Relation
+  def including_silenced_accounts: () -> Status::ActiveRecord_Relation
+  def not_excluded_by_account: (untyped) -> Status::ActiveRecord_Relation
+  def not_domain_blocked_by_account: (untyped) -> Status::ActiveRecord_Relation
+  def tagged_with_all: (untyped) -> Status::ActiveRecord_Relation
+  def tagged_with_none: (untyped) -> Status::ActiveRecord_Relation
+end
+
+class Status::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

@@ -1,0 +1,28 @@
+class Mention < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Mention, Mention::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor status_id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor account_id (): Integer
+  attr_accessor silent (): TrueClass | FalseClass
+
+  def notification: () -> Notification
+  def account: () -> Account
+  def status: () -> Status
+
+  def self.active: () -> Mention::ActiveRecord_Relation
+  def self.silent: () -> Mention::ActiveRecord_Relation
+end
+
+class Mention::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Mention]
+  include Enumerable[Mention, self]
+
+  def active: () -> Mention::ActiveRecord_Relation
+  def silent: () -> Mention::ActiveRecord_Relation
+end
+
+class Mention::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

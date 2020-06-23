@@ -1,0 +1,23 @@
+class AnnouncementReaction < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AnnouncementReaction, AnnouncementReaction::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor announcement_id (): Integer
+  attr_accessor name (): String
+  attr_accessor custom_emoji_id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+  def announcement: () -> Announcement
+  def custom_emoji: () -> CustomEmoji
+end
+
+class AnnouncementReaction::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[AnnouncementReaction]
+  include Enumerable[AnnouncementReaction, self]
+end
+
+class AnnouncementReaction::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

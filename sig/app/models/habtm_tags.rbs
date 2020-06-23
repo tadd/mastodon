@@ -1,0 +1,17 @@
+class HABTM_Tags < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[HABTM_Tags, HABTM_Tags::ActiveRecord_Relation]
+
+  attr_accessor status_id (): Integer
+  attr_accessor tag_id (): Integer
+
+  def left_side: () -> Status
+  def tag: () -> Tag
+end
+
+class HABTM_Tags::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[HABTM_Tags]
+  include Enumerable[HABTM_Tags, self]
+end
+
+class HABTM_Tags::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

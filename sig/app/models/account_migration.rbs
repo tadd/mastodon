@@ -1,0 +1,26 @@
+class AccountMigration < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AccountMigration, AccountMigration::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor acct (): String
+  attr_accessor followers_count (): Integer
+  attr_accessor target_account_id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+  def target_account: () -> Account
+
+  def self.within_cooldown: (?untyped) -> AccountMigration::ActiveRecord_Relation
+end
+
+class AccountMigration::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[AccountMigration]
+  include Enumerable[AccountMigration, self]
+
+  def within_cooldown: (?untyped) -> AccountMigration::ActiveRecord_Relation
+end
+
+class AccountMigration::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

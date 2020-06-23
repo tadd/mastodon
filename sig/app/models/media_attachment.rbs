@@ -1,0 +1,46 @@
+class MediaAttachment < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[MediaAttachment, MediaAttachment::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor status_id (): Integer
+  attr_accessor file_file_name (): String
+  attr_accessor file_content_type (): String
+  attr_accessor file_file_size (): Integer
+  attr_accessor file_updated_at (): Time
+  attr_accessor remote_url (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor shortcode (): String
+  attr_accessor type (): Integer
+  attr_accessor file_meta (): untyped
+  attr_accessor account_id (): Integer
+  attr_accessor description (): String
+  attr_accessor scheduled_status_id (): Integer
+  attr_accessor blurhash (): String
+  attr_accessor processing (): Integer
+  attr_accessor file_storage_schema_version (): Integer
+
+  def account: () -> Account
+  def status: () -> Status
+  def scheduled_status: () -> ScheduledStatus
+
+  def self.attached: () -> MediaAttachment::ActiveRecord_Relation
+  def self.unattached: () -> MediaAttachment::ActiveRecord_Relation
+  def self.local: () -> MediaAttachment::ActiveRecord_Relation
+  def self.remote: () -> MediaAttachment::ActiveRecord_Relation
+  def self.cached: () -> MediaAttachment::ActiveRecord_Relation
+end
+
+class MediaAttachment::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[MediaAttachment]
+  include Enumerable[MediaAttachment, self]
+
+  def attached: () -> MediaAttachment::ActiveRecord_Relation
+  def unattached: () -> MediaAttachment::ActiveRecord_Relation
+  def local: () -> MediaAttachment::ActiveRecord_Relation
+  def remote: () -> MediaAttachment::ActiveRecord_Relation
+  def cached: () -> MediaAttachment::ActiveRecord_Relation
+end
+
+class MediaAttachment::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

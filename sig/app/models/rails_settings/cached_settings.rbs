@@ -1,0 +1,21 @@
+class RailsSettings::CachedSettings < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[RailsSettings::CachedSettings, RailsSettings::CachedSettings::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor var (): String
+  attr_accessor value (): String
+  attr_accessor thing_type (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor thing_id (): Integer
+
+  def thing: () -> untyped
+end
+
+class RailsSettings::CachedSettings::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[RailsSettings::CachedSettings]
+  include Enumerable[RailsSettings::CachedSettings, self]
+end
+
+class RailsSettings::CachedSettings::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

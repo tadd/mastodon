@@ -1,0 +1,23 @@
+class Admin::ActionLog < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Admin::ActionLog, Admin::ActionLog::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor action (): String
+  attr_accessor target_type (): String
+  attr_accessor target_id (): Integer
+  attr_accessor recorded_changes (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+  def target: () -> untyped
+end
+
+class Admin::ActionLog::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Admin::ActionLog]
+  include Enumerable[Admin::ActionLog, self]
+end
+
+class Admin::ActionLog::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

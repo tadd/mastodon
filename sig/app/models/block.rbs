@@ -1,0 +1,21 @@
+class Block < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Block, Block::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor account_id (): Integer
+  attr_accessor target_account_id (): Integer
+  attr_accessor uri (): String
+
+  def account: () -> Account
+  def target_account: () -> Account
+end
+
+class Block::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Block]
+  include Enumerable[Block, self]
+end
+
+class Block::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

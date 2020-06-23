@@ -1,0 +1,159 @@
+class Account < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Account, Account::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor username (): String
+  attr_accessor domain (): String
+  attr_accessor secret (): String
+  attr_accessor private_key (): String
+  attr_accessor public_key (): String
+  attr_accessor remote_url (): String
+  attr_accessor salmon_url (): String
+  attr_accessor hub_url (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor note (): String
+  attr_accessor display_name (): String
+  attr_accessor uri (): String
+  attr_accessor url (): String
+  attr_accessor avatar_file_name (): String
+  attr_accessor avatar_content_type (): String
+  attr_accessor avatar_file_size (): Integer
+  attr_accessor avatar_updated_at (): Time
+  attr_accessor header_file_name (): String
+  attr_accessor header_content_type (): String
+  attr_accessor header_file_size (): Integer
+  attr_accessor header_updated_at (): Time
+  attr_accessor avatar_remote_url (): String
+  attr_accessor subscription_expires_at (): Time
+  attr_accessor locked (): TrueClass | FalseClass
+  attr_accessor header_remote_url (): String
+  attr_accessor last_webfingered_at (): Time
+  attr_accessor inbox_url (): String
+  attr_accessor outbox_url (): String
+  attr_accessor shared_inbox_url (): String
+  attr_accessor followers_url (): String
+  attr_accessor protocol (): Integer
+  attr_accessor memorial (): TrueClass | FalseClass
+  attr_accessor moved_to_account_id (): Integer
+  attr_accessor featured_collection_url (): String
+  attr_accessor fields (): untyped
+  attr_accessor actor_type (): String
+  attr_accessor discoverable (): TrueClass | FalseClass
+  attr_accessor also_known_as (): String
+  attr_accessor silenced_at (): Time
+  attr_accessor suspended_at (): Time
+  attr_accessor trust_level (): Integer
+  attr_accessor hide_collections (): TrueClass | FalseClass
+  attr_accessor avatar_storage_schema_version (): Integer
+  attr_accessor header_storage_schema_version (): Integer
+  attr_accessor devices_url (): String
+  def identity_proofs: () -> AccountIdentityProof::ActiveRecord_Associations_CollectionProxy
+  def devices: () -> Device::ActiveRecord_Associations_CollectionProxy
+  def statuses: () -> Status::ActiveRecord_Associations_CollectionProxy
+  def favourites: () -> Favourite::ActiveRecord_Associations_CollectionProxy
+  def bookmarks: () -> Bookmark::ActiveRecord_Associations_CollectionProxy
+  def mentions: () -> Mention::ActiveRecord_Associations_CollectionProxy
+  def notifications: () -> Notification::ActiveRecord_Associations_CollectionProxy
+  def conversations: () -> AccountConversation::ActiveRecord_Associations_CollectionProxy
+  def scheduled_statuses: () -> ScheduledStatus::ActiveRecord_Associations_CollectionProxy
+  def status_pins: () -> StatusPin::ActiveRecord_Associations_CollectionProxy
+  def pinned_statuses: () -> Status::ActiveRecord_Associations_CollectionProxy
+  def account_pins: () -> AccountPin::ActiveRecord_Associations_CollectionProxy
+  def endorsed_accounts: () -> Account::ActiveRecord_Associations_CollectionProxy
+  def media_attachments: () -> MediaAttachment::ActiveRecord_Associations_CollectionProxy
+  def polls: () -> Poll::ActiveRecord_Associations_CollectionProxy
+  def reports: () -> Report::ActiveRecord_Associations_CollectionProxy
+  def targeted_reports: () -> Report::ActiveRecord_Associations_CollectionProxy
+  def report_notes: () -> ReportNote::ActiveRecord_Associations_CollectionProxy
+  def custom_filters: () -> CustomFilter::ActiveRecord_Associations_CollectionProxy
+  def account_moderation_notes: () -> AccountModerationNote::ActiveRecord_Associations_CollectionProxy
+  def targeted_moderation_notes: () -> AccountModerationNote::ActiveRecord_Associations_CollectionProxy
+  def account_warnings: () -> AccountWarning::ActiveRecord_Associations_CollectionProxy
+  def targeted_account_warnings: () -> AccountWarning::ActiveRecord_Associations_CollectionProxy
+  def list_accounts: () -> ListAccount::ActiveRecord_Associations_CollectionProxy
+  def lists: () -> List::ActiveRecord_Associations_CollectionProxy
+  def owned_lists: () -> List::ActiveRecord_Associations_CollectionProxy
+  def migrations: () -> AccountMigration::ActiveRecord_Associations_CollectionProxy
+  def aliases: () -> AccountAlias::ActiveRecord_Associations_CollectionProxy
+  def featured_tags: () -> FeaturedTag::ActiveRecord_Associations_CollectionProxy
+  def follow_requests: () -> FollowRequest::ActiveRecord_Associations_CollectionProxy
+  def active_relationships: () -> Follow::ActiveRecord_Associations_CollectionProxy
+  def passive_relationships: () -> Follow::ActiveRecord_Associations_CollectionProxy
+  def following: () -> Account::ActiveRecord_Associations_CollectionProxy
+  def followers: () -> Account::ActiveRecord_Associations_CollectionProxy
+  def block_relationships: () -> Block::ActiveRecord_Associations_CollectionProxy
+  def blocking: () -> Account::ActiveRecord_Associations_CollectionProxy
+  def blocked_by_relationships: () -> Block::ActiveRecord_Associations_CollectionProxy
+  def blocked_by: () -> Account::ActiveRecord_Associations_CollectionProxy
+  def mute_relationships: () -> Mute::ActiveRecord_Associations_CollectionProxy
+  def muting: () -> Account::ActiveRecord_Associations_CollectionProxy
+  def muted_by_relationships: () -> Mute::ActiveRecord_Associations_CollectionProxy
+  def muted_by: () -> Account::ActiveRecord_Associations_CollectionProxy
+  def conversation_mutes: () -> ConversationMute::ActiveRecord_Associations_CollectionProxy
+  def domain_blocks: () -> AccountDomainBlock::ActiveRecord_Associations_CollectionProxy
+  def announcement_mutes: () -> AnnouncementMute::ActiveRecord_Associations_CollectionProxy
+  def user: () -> User
+  def account_stat: () -> AccountStat
+  def moved_to_account: () -> Account
+
+  def self.remote: () -> Account::ActiveRecord_Relation
+  def self.local: () -> Account::ActiveRecord_Relation
+  def self.expiring: (untyped) -> Account::ActiveRecord_Relation
+  def self.partitioned: () -> Account::ActiveRecord_Relation
+  def self.silenced: () -> Account::ActiveRecord_Relation
+  def self.suspended: () -> Account::ActiveRecord_Relation
+  def self.without_suspended: () -> Account::ActiveRecord_Relation
+  def self.without_silenced: () -> Account::ActiveRecord_Relation
+  def self.recent: () -> Account::ActiveRecord_Relation
+  def self.bots: () -> Account::ActiveRecord_Relation
+  def self.groups: () -> Account::ActiveRecord_Relation
+  def self.alphabetic: () -> Account::ActiveRecord_Relation
+  def self.by_domain_accounts: () -> Account::ActiveRecord_Relation
+  def self.matches_username: (untyped) -> Account::ActiveRecord_Relation
+  def self.matches_display_name: (untyped) -> Account::ActiveRecord_Relation
+  def self.matches_domain: (untyped) -> Account::ActiveRecord_Relation
+  def self.searchable: () -> Account::ActiveRecord_Relation
+  def self.discoverable: () -> Account::ActiveRecord_Relation
+  def self.tagged_with: (untyped) -> Account::ActiveRecord_Relation
+  def self.by_recent_status: () -> Account::ActiveRecord_Relation
+  def self.by_recent_sign_in: () -> Account::ActiveRecord_Relation
+  def self.popular: () -> Account::ActiveRecord_Relation
+  def self.by_domain_and_subdomains: (untyped) -> Account::ActiveRecord_Relation
+  def self.not_excluded_by_account: (untyped) -> Account::ActiveRecord_Relation
+  def self.not_domain_blocked_by_account: (untyped) -> Account::ActiveRecord_Relation
+end
+
+class Account::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Account]
+  include Enumerable[Account, self]
+
+  def remote: () -> Account::ActiveRecord_Relation
+  def local: () -> Account::ActiveRecord_Relation
+  def expiring: (untyped) -> Account::ActiveRecord_Relation
+  def partitioned: () -> Account::ActiveRecord_Relation
+  def silenced: () -> Account::ActiveRecord_Relation
+  def suspended: () -> Account::ActiveRecord_Relation
+  def without_suspended: () -> Account::ActiveRecord_Relation
+  def without_silenced: () -> Account::ActiveRecord_Relation
+  def recent: () -> Account::ActiveRecord_Relation
+  def bots: () -> Account::ActiveRecord_Relation
+  def groups: () -> Account::ActiveRecord_Relation
+  def alphabetic: () -> Account::ActiveRecord_Relation
+  def by_domain_accounts: () -> Account::ActiveRecord_Relation
+  def matches_username: (untyped) -> Account::ActiveRecord_Relation
+  def matches_display_name: (untyped) -> Account::ActiveRecord_Relation
+  def matches_domain: (untyped) -> Account::ActiveRecord_Relation
+  def searchable: () -> Account::ActiveRecord_Relation
+  def discoverable: () -> Account::ActiveRecord_Relation
+  def tagged_with: (untyped) -> Account::ActiveRecord_Relation
+  def by_recent_status: () -> Account::ActiveRecord_Relation
+  def by_recent_sign_in: () -> Account::ActiveRecord_Relation
+  def popular: () -> Account::ActiveRecord_Relation
+  def by_domain_and_subdomains: (untyped) -> Account::ActiveRecord_Relation
+  def not_excluded_by_account: (untyped) -> Account::ActiveRecord_Relation
+  def not_domain_blocked_by_account: (untyped) -> Account::ActiveRecord_Relation
+end
+
+class Account::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

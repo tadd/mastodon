@@ -1,0 +1,35 @@
+class Announcement < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Announcement, Announcement::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor text (): String
+  attr_accessor published (): TrueClass | FalseClass
+  attr_accessor all_day (): TrueClass | FalseClass
+  attr_accessor scheduled_at (): Time
+  attr_accessor starts_at (): Time
+  attr_accessor ends_at (): Time
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor published_at (): Time
+  attr_accessor status_ids (): Integer
+  def announcement_mutes: () -> AnnouncementMute::ActiveRecord_Associations_CollectionProxy
+  def announcement_reactions: () -> AnnouncementReaction::ActiveRecord_Associations_CollectionProxy
+
+  def self.unpublished: () -> Announcement::ActiveRecord_Relation
+  def self.published: () -> Announcement::ActiveRecord_Relation
+  def self.without_muted: (untyped) -> Announcement::ActiveRecord_Relation
+  def self.chronological: () -> Announcement::ActiveRecord_Relation
+end
+
+class Announcement::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Announcement]
+  include Enumerable[Announcement, self]
+
+  def unpublished: () -> Announcement::ActiveRecord_Relation
+  def published: () -> Announcement::ActiveRecord_Relation
+  def without_muted: (untyped) -> Announcement::ActiveRecord_Relation
+  def chronological: () -> Announcement::ActiveRecord_Relation
+end
+
+class Announcement::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

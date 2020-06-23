@@ -1,0 +1,37 @@
+class Poll < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Poll, Poll::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor status_id (): Integer
+  attr_accessor expires_at (): Time
+  attr_accessor options (): String
+  attr_accessor cached_tallies (): Integer
+  attr_accessor multiple (): TrueClass | FalseClass
+  attr_accessor hide_totals (): TrueClass | FalseClass
+  attr_accessor votes_count (): Integer
+  attr_accessor last_fetched_at (): Time
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor lock_version (): Integer
+  attr_accessor voters_count (): Integer
+  def votes: () -> PollVote::ActiveRecord_Associations_CollectionProxy
+  def notifications: () -> Notification::ActiveRecord_Associations_CollectionProxy
+
+  def account: () -> Account
+  def status: () -> Status
+
+  def self.attached: () -> Poll::ActiveRecord_Relation
+  def self.unattached: () -> Poll::ActiveRecord_Relation
+end
+
+class Poll::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Poll]
+  include Enumerable[Poll, self]
+
+  def attached: () -> Poll::ActiveRecord_Relation
+  def unattached: () -> Poll::ActiveRecord_Relation
+end
+
+class Poll::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
