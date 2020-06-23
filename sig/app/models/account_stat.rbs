@@ -1,0 +1,23 @@
+class AccountStat < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AccountStat, AccountStat::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor statuses_count (): Integer
+  attr_accessor following_count (): Integer
+  attr_accessor followers_count (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor last_status_at (): Time
+  attr_accessor lock_version (): Integer
+
+  def account: () -> Account
+end
+
+class AccountStat::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[AccountStat]
+  include Enumerable[AccountStat, self]
+end
+
+class AccountStat::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

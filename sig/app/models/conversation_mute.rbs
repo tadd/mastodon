@@ -1,0 +1,18 @@
+class ConversationMute < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[ConversationMute, ConversationMute::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor conversation_id (): Integer
+  attr_accessor account_id (): Integer
+
+  def account: () -> Account
+  def conversation: () -> Conversation
+end
+
+class ConversationMute::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[ConversationMute]
+  include Enumerable[ConversationMute, self]
+end
+
+class ConversationMute::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

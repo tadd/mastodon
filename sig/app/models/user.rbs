@@ -1,0 +1,147 @@
+class User < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[User, User::ActiveRecord_Relation]
+
+  include Settings::Extend
+
+  include UserRoles
+
+  include Omniauthable
+
+  include PamAuthenticable
+
+  include LdapAuthenticable
+
+  attr_accessor id (): Integer
+  attr_accessor email (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor encrypted_password (): String
+  attr_accessor reset_password_token (): String
+  attr_accessor reset_password_sent_at (): Time
+  attr_accessor remember_created_at (): Time
+  attr_accessor sign_in_count (): Integer
+  attr_accessor current_sign_in_at (): Time
+  attr_accessor last_sign_in_at (): Time
+  attr_accessor current_sign_in_ip (): IPAddr
+  attr_accessor last_sign_in_ip (): IPAddr
+  attr_accessor admin (): TrueClass | FalseClass
+  attr_accessor confirmation_token (): String
+  attr_accessor confirmed_at (): Time
+  attr_accessor confirmation_sent_at (): Time
+  attr_accessor unconfirmed_email (): String
+  attr_accessor locale (): String
+  attr_accessor encrypted_otp_secret (): String
+  attr_accessor encrypted_otp_secret_iv (): String
+  attr_accessor encrypted_otp_secret_salt (): String
+  attr_accessor consumed_timestep (): Integer
+  attr_accessor otp_required_for_login (): TrueClass | FalseClass
+  attr_accessor last_emailed_at (): Time
+  attr_accessor otp_backup_codes (): String
+  attr_accessor filtered_languages (): String
+  attr_accessor account_id (): Integer
+  attr_accessor disabled (): TrueClass | FalseClass
+  attr_accessor moderator (): TrueClass | FalseClass
+  attr_accessor invite_id (): Integer
+  attr_accessor remember_token (): String
+  attr_accessor chosen_languages (): String
+  attr_accessor created_by_application_id (): Integer
+  attr_accessor approved (): TrueClass | FalseClass
+  attr_accessor sign_in_token (): String
+  attr_accessor sign_in_token_sent_at (): Time
+
+  attr_reader invite_code: String
+  attr_reader sign_in_token_attempt: untyped
+
+  attr_writer external: bool
+
+  def applications: () -> Doorkeeper::Application::ActiveRecord_Associations_CollectionProxy
+  def backups: () -> Backup::ActiveRecord_Associations_CollectionProxy
+  def invites: () -> Invite::ActiveRecord_Associations_CollectionProxy
+  def markers: () -> Marker::ActiveRecord_Associations_CollectionProxy
+  def session_activations: () -> SessionActivation::ActiveRecord_Associations_CollectionProxy
+  def invite_request: () -> UserInviteRequest
+  def account: () -> Account
+  def invite: () -> Invite
+  def created_by_application: () -> Doorkeeper::Application
+
+  def active_for_authentication?: () -> bool
+  def suspicious_sign_in?: (IPAddr) -> bool
+  def functional?: () -> bool
+  def unconfirmed_or_pending?: () -> bool
+  def inactive_message: () -> Symbol
+  def approve!: () -> void
+  def update_tracked_fields!: (untyped) -> void
+  def disable_two_factor!: () -> void
+  def setting_default_privacy: () -> String
+  def allows_digest_emails?: () -> bool
+  def allows_report_emails?: () -> bool
+  def allows_pending_account_emails?: () -> bool
+  def allows_trending_tag_emails?: () -> bool
+  def hides_network?: () -> bool
+  def aggregates_reblogs?: () -> bool
+  def shows_application?: () -> bool
+  def token_for_app: (untyped a) -> (nil | untyped) # Dk::AccessToken
+  def clear_other_sessions: (untyped id) -> untyped
+  def session_active?: (untyped id) ->bool
+  def web_push_subscription: (untyped session) -> untyped
+  def invite_code=: (String) -> String
+  def password_required?: () -> bool
+  def external_or_valid_password?: (untyped compare_password) -> bool
+  def send_reset_password_instructions: () -> (false | untyped)
+  def reset_password!: (String, String) -> void
+  def show_all_media?: () -> bool
+  def hide_all_media?: () -> bool
+  def recent_ips: () -> Array[[Time, IPAddr]]
+  def sign_in_token_expired?: () -> bool
+  def generate_sign_in_token: () -> void
+  def send_devise_notification: (untyped notification, *untyped args) -> void
+  def recent_ip?: (IPAddr ip) -> bool
+  def send_pending_devise_notifications: () -> untyped
+  def pending_devise_notifications: () -> untyped
+  def render_and_send_devise_message: (untyped notification, *untyped args) -> untyped
+  def set_approved: () -> void
+  def open_registrations?: () -> bool
+  def external?: () -> bool
+  def sanitize_languages: () -> void
+  def prepare_new_user!: () -> void
+  def prepare_returning_user!: () -> void
+  def notify_staff_about_pending_account!: () -> void
+  def regenerate_feed!: () -> void
+  def needs_feed_update?: () -> bool
+  def validate_email_dns?: () -> bool
+  def approved?: () -> bool
+
+  def self.recent: () -> User::ActiveRecord_Relation
+  def self.pending: () -> User::ActiveRecord_Relation
+  def self.approved: () -> User::ActiveRecord_Relation
+  def self.confirmed: () -> User::ActiveRecord_Relation
+  def self.enabled: () -> User::ActiveRecord_Relation
+  def self.disabled: () -> User::ActiveRecord_Relation
+  def self.inactive: () -> User::ActiveRecord_Relation
+  def self.active: () -> User::ActiveRecord_Relation
+  def self.matches_email: (untyped) -> User::ActiveRecord_Relation
+  def self.matches_ip: (untyped) -> User::ActiveRecord_Relation
+  def self.emailable: () -> User::ActiveRecord_Relation
+end
+
+User::ACTIVE_DURATION: ActiveSupport::Duration
+
+class User::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[User]
+  include Enumerable[User, self]
+
+  def recent: () -> User::ActiveRecord_Relation
+  def pending: () -> User::ActiveRecord_Relation
+  def approved: () -> User::ActiveRecord_Relation
+  def confirmed: () -> User::ActiveRecord_Relation
+  def enabled: () -> User::ActiveRecord_Relation
+  def disabled: () -> User::ActiveRecord_Relation
+  def inactive: () -> User::ActiveRecord_Relation
+  def active: () -> User::ActiveRecord_Relation
+  def matches_email: (untyped) -> User::ActiveRecord_Relation
+  def matches_ip: (untyped) -> User::ActiveRecord_Relation
+  def emailable: () -> User::ActiveRecord_Relation
+end
+
+class User::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

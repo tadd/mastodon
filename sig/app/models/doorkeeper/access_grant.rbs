@@ -1,0 +1,23 @@
+class Doorkeeper::AccessGrant < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Doorkeeper::AccessGrant, Doorkeeper::AccessGrant::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor token (): String
+  attr_accessor expires_in (): Integer
+  attr_accessor redirect_uri (): String
+  attr_accessor created_at (): Time
+  attr_accessor revoked_at (): Time
+  attr_accessor scopes (): String
+  attr_accessor application_id (): Integer
+  attr_accessor resource_owner_id (): Integer
+
+  def application: () -> Doorkeeper::Application
+end
+
+class Doorkeeper::AccessGrant::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Doorkeeper::AccessGrant]
+  include Enumerable[Doorkeeper::AccessGrant, self]
+end
+
+class Doorkeeper::AccessGrant::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

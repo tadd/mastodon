@@ -1,0 +1,21 @@
+class OneTimeKey < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[OneTimeKey, OneTimeKey::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor device_id (): Integer
+  attr_accessor key_id (): String
+  attr_accessor key (): String
+  attr_accessor signature (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def device: () -> Device
+end
+
+class OneTimeKey::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[OneTimeKey]
+  include Enumerable[OneTimeKey, self]
+end
+
+class OneTimeKey::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

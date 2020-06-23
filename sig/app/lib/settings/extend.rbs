@@ -1,0 +1,6 @@
+module Settings
+end
+
+module Settings::Extend
+  def settings: () -> untyped
+end

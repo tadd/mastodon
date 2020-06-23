@@ -1,0 +1,21 @@
+class Mute < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Mute, Mute::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor hide_notifications (): TrueClass | FalseClass
+  attr_accessor account_id (): Integer
+  attr_accessor target_account_id (): Integer
+
+  def account: () -> Account
+  def target_account: () -> Account
+end
+
+class Mute::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Mute]
+  include Enumerable[Mute, self]
+end
+
+class Mute::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

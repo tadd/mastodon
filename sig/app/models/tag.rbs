@@ -1,0 +1,46 @@
+class Tag < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Tag, Tag::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor name (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor usable (): TrueClass | FalseClass
+  attr_accessor trendable (): TrueClass | FalseClass
+  attr_accessor listable (): TrueClass | FalseClass
+  attr_accessor reviewed_at (): Time
+  attr_accessor requested_review_at (): Time
+  attr_accessor last_status_at (): Time
+  attr_accessor max_score (): Float
+  attr_accessor max_score_at (): Time
+  def featured_tags: () -> FeaturedTag::ActiveRecord_Associations_CollectionProxy
+  def account_tag_stat: () -> AccountTagStat
+
+  def self.reviewed: () -> Tag::ActiveRecord_Relation
+  def self.unreviewed: () -> Tag::ActiveRecord_Relation
+  def self.pending_review: () -> Tag::ActiveRecord_Relation
+  def self.usable: () -> Tag::ActiveRecord_Relation
+  def self.listable: () -> Tag::ActiveRecord_Relation
+  def self.trendable: () -> Tag::ActiveRecord_Relation
+  def self.discoverable: () -> Tag::ActiveRecord_Relation
+  def self.most_used: (untyped) -> Tag::ActiveRecord_Relation
+  def self.matches_name: (untyped) -> Tag::ActiveRecord_Relation
+end
+
+class Tag::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Tag]
+  include Enumerable[Tag, self]
+
+  def reviewed: () -> Tag::ActiveRecord_Relation
+  def unreviewed: () -> Tag::ActiveRecord_Relation
+  def pending_review: () -> Tag::ActiveRecord_Relation
+  def usable: () -> Tag::ActiveRecord_Relation
+  def listable: () -> Tag::ActiveRecord_Relation
+  def trendable: () -> Tag::ActiveRecord_Relation
+  def discoverable: () -> Tag::ActiveRecord_Relation
+  def most_used: (untyped) -> Tag::ActiveRecord_Relation
+  def matches_name: (untyped) -> Tag::ActiveRecord_Relation
+end
+
+class Tag::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

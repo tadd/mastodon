@@ -1,0 +1,20 @@
+class AccountPin < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AccountPin, AccountPin::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor target_account_id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+  def target_account: () -> Account
+end
+
+class AccountPin::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[AccountPin]
+  include Enumerable[AccountPin, self]
+end
+
+class AccountPin::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

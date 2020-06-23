@@ -1,0 +1,17 @@
+class CustomEmojiCategory < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[CustomEmojiCategory, CustomEmojiCategory::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor name (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  def emojis: () -> CustomEmoji::ActiveRecord_Associations_CollectionProxy
+end
+
+class CustomEmojiCategory::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[CustomEmojiCategory]
+  include Enumerable[CustomEmojiCategory, self]
+end
+
+class CustomEmojiCategory::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

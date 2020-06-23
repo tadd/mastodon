@@ -1,0 +1,21 @@
+class SiteUpload < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[SiteUpload, SiteUpload::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor var (): String
+  attr_accessor file_file_name (): String
+  attr_accessor file_content_type (): String
+  attr_accessor file_file_size (): Integer
+  attr_accessor file_updated_at (): Time
+  attr_accessor meta (): untyped
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+end
+
+class SiteUpload::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[SiteUpload]
+  include Enumerable[SiteUpload, self]
+end
+
+class SiteUpload::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
