@@ -1,0 +1,25 @@
+class Import < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Import, Import::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor type (): Integer
+  attr_accessor approved (): TrueClass | FalseClass
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor data_file_name (): String
+  attr_accessor data_content_type (): String
+  attr_accessor data_file_size (): Integer
+  attr_accessor data_updated_at (): Time
+  attr_accessor account_id (): Integer
+  attr_accessor overwrite (): TrueClass | FalseClass
+
+  def account: () -> Account
+end
+
+class Import::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Import]
+  include Enumerable[Import, self]
+end
+
+class Import::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

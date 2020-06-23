@@ -1,0 +1,16 @@
+class UnavailableDomain < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[UnavailableDomain, UnavailableDomain::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor domain (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+end
+
+class UnavailableDomain::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[UnavailableDomain]
+  include Enumerable[UnavailableDomain, self]
+end
+
+class UnavailableDomain::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

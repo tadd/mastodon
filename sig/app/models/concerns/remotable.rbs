@@ -1,0 +1,9 @@
+module Remotable
+  extend ActiveSupport::Concern
+
+  def remotable_attachment: (untyped attachment_name, untyped limit, ?suppress_errors: bool suppress_errors) -> (nil | untyped)
+
+  def detect_extname_from_content_type: (untyped content_type) -> (nil | ::String)
+
+  def parse_content_type: (untyped content_type) -> (nil | untyped)
+end

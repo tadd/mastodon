@@ -1,0 +1,20 @@
+class Identity < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Identity, Identity::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor provider (): String
+  attr_accessor uid (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor user_id (): Integer
+
+  def user: () -> User
+end
+
+class Identity::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Identity]
+  include Enumerable[Identity, self]
+end
+
+class Identity::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

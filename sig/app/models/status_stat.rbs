@@ -1,0 +1,21 @@
+class StatusStat < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[StatusStat, StatusStat::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor status_id (): Integer
+  attr_accessor replies_count (): Integer
+  attr_accessor reblogs_count (): Integer
+  attr_accessor favourites_count (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def status: () -> Status
+end
+
+class StatusStat::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[StatusStat]
+  include Enumerable[StatusStat, self]
+end
+
+class StatusStat::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

@@ -1,0 +1,21 @@
+class List < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[List, List::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor title (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  def list_accounts: () -> ListAccount::ActiveRecord_Associations_CollectionProxy
+  def accounts: () -> Account::ActiveRecord_Associations_CollectionProxy
+
+  def account: () -> Account
+end
+
+class List::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[List]
+  include Enumerable[List, self]
+end
+
+class List::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

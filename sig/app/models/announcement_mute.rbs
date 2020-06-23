@@ -1,0 +1,20 @@
+class AnnouncementMute < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AnnouncementMute, AnnouncementMute::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor announcement_id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+  def announcement: () -> Announcement
+end
+
+class AnnouncementMute::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[AnnouncementMute]
+  include Enumerable[AnnouncementMute, self]
+end
+
+class AnnouncementMute::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

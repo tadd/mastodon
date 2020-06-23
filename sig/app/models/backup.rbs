@@ -1,0 +1,23 @@
+class Backup < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Backup, Backup::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor user_id (): Integer
+  attr_accessor dump_file_name (): String
+  attr_accessor dump_content_type (): String
+  attr_accessor dump_updated_at (): Time
+  attr_accessor processed (): TrueClass | FalseClass
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor dump_file_size (): Integer
+
+  def user: () -> User
+end
+
+class Backup::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Backup]
+  include Enumerable[Backup, self]
+end
+
+class Backup::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

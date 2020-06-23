@@ -1,0 +1,21 @@
+class Setting < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Setting, Setting::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor var (): String
+  attr_accessor value (): String
+  attr_accessor thing_type (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor thing_id (): Integer
+
+  def thing: () -> untyped
+end
+
+class Setting::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Setting]
+  include Enumerable[Setting, self]
+end
+
+class Setting::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

@@ -1,0 +1,33 @@
+class Notification < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Notification, Notification::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor activity_id (): Integer
+  attr_accessor activity_type (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor account_id (): Integer
+  attr_accessor from_account_id (): Integer
+
+  def account: () -> Account
+  def from_account: () -> Account
+  def activity: () -> untyped
+  def mention: () -> Mention
+  def status: () -> Status
+  def follow: () -> Follow
+  def follow_request: () -> FollowRequest
+  def favourite: () -> Favourite
+  def poll: () -> Poll
+
+  def self.browserable: (?untyped, ?untyped) -> Notification::ActiveRecord_Relation
+end
+
+class Notification::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Notification]
+  include Enumerable[Notification, self]
+
+  def browserable: (?untyped, ?untyped) -> Notification::ActiveRecord_Relation
+end
+
+class Notification::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

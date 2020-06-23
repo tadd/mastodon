@@ -1,0 +1,27 @@
+class Follow < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Follow, Follow::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor account_id (): Integer
+  attr_accessor target_account_id (): Integer
+  attr_accessor show_reblogs (): TrueClass | FalseClass
+  attr_accessor uri (): String
+
+  def notification: () -> Notification
+  def account: () -> Account
+  def target_account: () -> Account
+
+  def self.recent: () -> Follow::ActiveRecord_Relation
+end
+
+class Follow::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Follow]
+  include Enumerable[Follow, self]
+
+  def recent: () -> Follow::ActiveRecord_Relation
+end
+
+class Follow::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

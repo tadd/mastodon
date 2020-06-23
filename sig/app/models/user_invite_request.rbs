@@ -1,0 +1,19 @@
+class UserInviteRequest < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[UserInviteRequest, UserInviteRequest::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor user_id (): Integer
+  attr_accessor text (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def user: () -> User
+end
+
+class UserInviteRequest::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[UserInviteRequest]
+  include Enumerable[UserInviteRequest, self]
+end
+
+class UserInviteRequest::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

@@ -1,0 +1,20 @@
+class EmailDomainBlock < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[EmailDomainBlock, EmailDomainBlock::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor domain (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor parent_id (): Integer
+  def children: () -> EmailDomainBlock::ActiveRecord_Associations_CollectionProxy
+
+  def parent: () -> EmailDomainBlock
+end
+
+class EmailDomainBlock::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[EmailDomainBlock]
+  include Enumerable[EmailDomainBlock, self]
+end
+
+class EmailDomainBlock::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

@@ -1,0 +1,27 @@
+class CustomFilter < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[CustomFilter, CustomFilter::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor expires_at (): Time
+  attr_accessor phrase (): String
+  attr_accessor context (): String
+  attr_accessor irreversible (): TrueClass | FalseClass
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor whole_word (): TrueClass | FalseClass
+
+  def account: () -> Account
+
+  def self.active_irreversible: () -> CustomFilter::ActiveRecord_Relation
+end
+
+class CustomFilter::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[CustomFilter]
+  include Enumerable[CustomFilter, self]
+
+  def active_irreversible: () -> CustomFilter::ActiveRecord_Relation
+end
+
+class CustomFilter::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

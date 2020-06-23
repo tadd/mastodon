@@ -1,0 +1,21 @@
+class AccountWarningPreset < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AccountWarningPreset, AccountWarningPreset::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor text (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor title (): String
+
+  def self.alphabetic: () -> AccountWarningPreset::ActiveRecord_Relation
+end
+
+class AccountWarningPreset::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[AccountWarningPreset]
+  include Enumerable[AccountWarningPreset, self]
+
+  def alphabetic: () -> AccountWarningPreset::ActiveRecord_Relation
+end
+
+class AccountWarningPreset::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

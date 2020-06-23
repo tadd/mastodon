@@ -1,0 +1,21 @@
+class Marker < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Marker, Marker::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor user_id (): Integer
+  attr_accessor timeline (): String
+  attr_accessor last_read_id (): Integer
+  attr_accessor lock_version (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def user: () -> User
+end
+
+class Marker::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Marker]
+  include Enumerable[Marker, self]
+end
+
+class Marker::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

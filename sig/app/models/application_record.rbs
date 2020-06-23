@@ -1,0 +1,7 @@
+class ApplicationRecord < ActiveRecord::Base
+  include Remotable
+
+  def self.update_index: (untyped _type_name, *untyped _args) { () -> untyped } -> untyped
+
+  def boolean_with_default: (untyped key, untyped default_value) -> untyped
+end

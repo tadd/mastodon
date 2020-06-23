@@ -1,0 +1,17 @@
+class HABTM_SampleAccounts < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[HABTM_SampleAccounts, HABTM_SampleAccounts::ActiveRecord_Relation]
+
+  attr_accessor account_id (): Integer
+  attr_accessor tag_id (): Integer
+
+  def left_side: () -> Tag
+  def sample_account: () -> Account
+end
+
+class HABTM_SampleAccounts::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[HABTM_SampleAccounts]
+  include Enumerable[HABTM_SampleAccounts, self]
+end
+
+class HABTM_SampleAccounts::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

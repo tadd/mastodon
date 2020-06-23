@@ -1,0 +1,22 @@
+class FeaturedTag < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[FeaturedTag, FeaturedTag::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor tag_id (): Integer
+  attr_accessor statuses_count (): Integer
+  attr_accessor last_status_at (): Time
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+  def tag: () -> Tag
+end
+
+class FeaturedTag::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[FeaturedTag]
+  include Enumerable[FeaturedTag, self]
+end
+
+class FeaturedTag::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

@@ -1,0 +1,20 @@
+class DomainAllow < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[DomainAllow, DomainAllow::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor domain (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def self.matches_domain: (untyped) -> DomainAllow::ActiveRecord_Relation
+end
+
+class DomainAllow::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[DomainAllow]
+  include Enumerable[DomainAllow, self]
+
+  def matches_domain: (untyped) -> DomainAllow::ActiveRecord_Relation
+end
+
+class DomainAllow::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

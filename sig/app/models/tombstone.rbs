@@ -1,0 +1,20 @@
+class Tombstone < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Tombstone, Tombstone::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor uri (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor by_moderator (): TrueClass | FalseClass
+
+  def account: () -> Account
+end
+
+class Tombstone::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Tombstone]
+  include Enumerable[Tombstone, self]
+end
+
+class Tombstone::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

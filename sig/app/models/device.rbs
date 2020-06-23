@@ -1,0 +1,26 @@
+class Device < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Device, Device::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor access_token_id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor device_id (): String
+  attr_accessor name (): String
+  attr_accessor fingerprint_key (): String
+  attr_accessor identity_key (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  def one_time_keys: () -> OneTimeKey::ActiveRecord_Associations_CollectionProxy
+  def encrypted_messages: () -> EncryptedMessage::ActiveRecord_Associations_CollectionProxy
+
+  def access_token: () -> Doorkeeper::AccessToken
+  def account: () -> Account
+end
+
+class Device::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Device]
+  include Enumerable[Device, self]
+end
+
+class Device::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

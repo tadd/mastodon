@@ -1,0 +1,19 @@
+class AccountDomainBlock < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AccountDomainBlock, AccountDomainBlock::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor domain (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor account_id (): Integer
+
+  def account: () -> Account
+end
+
+class AccountDomainBlock::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[AccountDomainBlock]
+  include Enumerable[AccountDomainBlock, self]
+end
+
+class AccountDomainBlock::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

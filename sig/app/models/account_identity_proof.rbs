@@ -1,0 +1,27 @@
+class AccountIdentityProof < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AccountIdentityProof, AccountIdentityProof::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor provider (): String
+  attr_accessor provider_username (): String
+  attr_accessor token (): String
+  attr_accessor verified (): TrueClass | FalseClass
+  attr_accessor live (): TrueClass | FalseClass
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+
+  def self.active: () -> AccountIdentityProof::ActiveRecord_Relation
+end
+
+class AccountIdentityProof::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[AccountIdentityProof]
+  include Enumerable[AccountIdentityProof, self]
+
+  def active: () -> AccountIdentityProof::ActiveRecord_Relation
+end
+
+class AccountIdentityProof::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

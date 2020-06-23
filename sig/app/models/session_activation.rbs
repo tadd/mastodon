@@ -1,0 +1,25 @@
+class SessionActivation < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[SessionActivation, SessionActivation::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor session_id (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor user_agent (): String
+  attr_accessor ip (): IPAddr
+  attr_accessor access_token_id (): Integer
+  attr_accessor user_id (): Integer
+  attr_accessor web_push_subscription_id (): Integer
+
+  def user: () -> User
+  def access_token: () -> Doorkeeper::AccessToken
+  def web_push_subscription: () -> Web::PushSubscription
+end
+
+class SessionActivation::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[SessionActivation]
+  include Enumerable[SessionActivation, self]
+end
+
+class SessionActivation::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

@@ -1,0 +1,19 @@
+module Omniauthable
+  extend ActiveSupport::Concern
+
+  def omniauth_providers: () -> untyped
+
+  def email_verified?: () -> untyped
+
+  def find_for_oauth: (untyped auth, ?untyped? signed_in_resource) -> untyped
+
+  def create_for_oauth: (untyped auth) -> untyped
+
+  def user_params_from_auth: (untyped email, untyped auth) -> { email: untyped, password: untyped, agreement: ::TrueClass, external: ::TrueClass, account_attributes: { username: untyped, display_name: untyped } }
+
+  def ensure_unique_username: (untyped starting_username) -> untyped
+end
+
+Omniauthable::TEMP_EMAIL_PREFIX: ::String
+
+Omniauthable::TEMP_EMAIL_REGEX: untyped

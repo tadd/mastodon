@@ -1,0 +1,17 @@
+class HABTM_Statuses < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[HABTM_Statuses, HABTM_Statuses::ActiveRecord_Relation]
+
+  attr_accessor preview_card_id (): Integer
+  attr_accessor status_id (): Integer
+
+  def left_side: () -> PreviewCard
+  def status: () -> Status
+end
+
+class HABTM_Statuses::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[HABTM_Statuses]
+  include Enumerable[HABTM_Statuses, self]
+end
+
+class HABTM_Statuses::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

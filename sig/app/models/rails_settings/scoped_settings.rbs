@@ -1,0 +1,21 @@
+class RailsSettings::ScopedSettings < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[RailsSettings::ScopedSettings, RailsSettings::ScopedSettings::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor var (): String
+  attr_accessor value (): String
+  attr_accessor thing_type (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor thing_id (): Integer
+
+  def thing: () -> untyped
+end
+
+class RailsSettings::ScopedSettings::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[RailsSettings::ScopedSettings]
+  include Enumerable[RailsSettings::ScopedSettings, self]
+end
+
+class RailsSettings::ScopedSettings::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

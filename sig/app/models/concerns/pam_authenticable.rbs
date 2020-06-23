@@ -1,0 +1,15 @@
+module PamAuthenticable
+  extend ActiveSupport::Concern
+
+  def pam_conflict: (untyped _attributes) -> nil
+
+  def pam_conflict?: () -> untyped
+
+  def pam_get_name: () -> untyped
+
+  def pam_setup: (untyped _attributes) -> untyped
+
+  def self.pam_get_user: (?::Hash[untyped, untyped] attributes) -> (nil | untyped)
+
+  def self.authenticate_with_pam: (?::Hash[untyped, untyped] attributes) -> untyped
+end

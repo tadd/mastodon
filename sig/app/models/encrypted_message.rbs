@@ -1,0 +1,29 @@
+class EncryptedMessage < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[EncryptedMessage, EncryptedMessage::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor device_id (): Integer
+  attr_accessor from_account_id (): Integer
+  attr_accessor from_device_id (): String
+  attr_accessor type (): Integer
+  attr_accessor body (): String
+  attr_accessor digest (): String
+  attr_accessor message_franking (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def device: () -> Device
+  def from_account: () -> Account
+
+  def self.up_to: (untyped) -> EncryptedMessage::ActiveRecord_Relation
+end
+
+class EncryptedMessage::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[EncryptedMessage]
+  include Enumerable[EncryptedMessage, self]
+
+  def up_to: (untyped) -> EncryptedMessage::ActiveRecord_Relation
+end
+
+class EncryptedMessage::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

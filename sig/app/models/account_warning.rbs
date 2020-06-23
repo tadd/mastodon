@@ -1,0 +1,28 @@
+class AccountWarning < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AccountWarning, AccountWarning::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor target_account_id (): Integer
+  attr_accessor action (): Integer
+  attr_accessor text (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+  def target_account: () -> Account
+
+  def self.latest: () -> AccountWarning::ActiveRecord_Relation
+  def self.custom: () -> AccountWarning::ActiveRecord_Relation
+end
+
+class AccountWarning::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[AccountWarning]
+  include Enumerable[AccountWarning, self]
+
+  def latest: () -> AccountWarning::ActiveRecord_Relation
+  def custom: () -> AccountWarning::ActiveRecord_Relation
+end
+
+class AccountWarning::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

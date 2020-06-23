@@ -1,0 +1,19 @@
+class Web::Setting < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Web::Setting, Web::Setting::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor data (): untyped
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor user_id (): Integer
+
+  def user: () -> User
+end
+
+class Web::Setting::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Web::Setting]
+  include Enumerable[Web::Setting, self]
+end
+
+class Web::Setting::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

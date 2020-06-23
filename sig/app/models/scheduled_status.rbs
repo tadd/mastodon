@@ -1,0 +1,19 @@
+class ScheduledStatus < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[ScheduledStatus, ScheduledStatus::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor account_id (): Integer
+  attr_accessor scheduled_at (): Time
+  attr_accessor params (): untyped
+  def media_attachments: () -> MediaAttachment::ActiveRecord_Associations_CollectionProxy
+
+  def account: () -> Account
+end
+
+class ScheduledStatus::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[ScheduledStatus]
+  include Enumerable[ScheduledStatus, self]
+end
+
+class ScheduledStatus::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

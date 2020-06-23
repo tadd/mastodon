@@ -1,0 +1,25 @@
+class AccountModerationNote < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AccountModerationNote, AccountModerationNote::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor content (): String
+  attr_accessor account_id (): Integer
+  attr_accessor target_account_id (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def account: () -> Account
+  def target_account: () -> Account
+
+  def self.latest: () -> AccountModerationNote::ActiveRecord_Relation
+end
+
+class AccountModerationNote::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[AccountModerationNote]
+  include Enumerable[AccountModerationNote, self]
+
+  def latest: () -> AccountModerationNote::ActiveRecord_Relation
+end
+
+class AccountModerationNote::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

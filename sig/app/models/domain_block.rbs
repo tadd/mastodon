@@ -1,0 +1,30 @@
+class DomainBlock < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[DomainBlock, DomainBlock::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor domain (): String
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor severity (): Integer
+  attr_accessor reject_media (): TrueClass | FalseClass
+  attr_accessor reject_reports (): TrueClass | FalseClass
+  attr_accessor private_comment (): String
+  attr_accessor public_comment (): String
+  def accounts: () -> Account::ActiveRecord_Associations_CollectionProxy
+
+  def self.matches_domain: (untyped) -> DomainBlock::ActiveRecord_Relation
+  def self.with_user_facing_limitations: () -> DomainBlock::ActiveRecord_Relation
+  def self.by_severity: () -> DomainBlock::ActiveRecord_Relation
+end
+
+class DomainBlock::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[DomainBlock]
+  include Enumerable[DomainBlock, self]
+
+  def matches_domain: (untyped) -> DomainBlock::ActiveRecord_Relation
+  def with_user_facing_limitations: () -> DomainBlock::ActiveRecord_Relation
+  def by_severity: () -> DomainBlock::ActiveRecord_Relation
+end
+
+class DomainBlock::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

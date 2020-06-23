@@ -1,0 +1,20 @@
+class AccountTagStat < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AccountTagStat, AccountTagStat::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor tag_id (): Integer
+  attr_accessor accounts_count (): Integer
+  attr_accessor hidden (): TrueClass | FalseClass
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+
+  def tag: () -> Tag
+end
+
+class AccountTagStat::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[AccountTagStat]
+  include Enumerable[AccountTagStat, self]
+end
+
+class AccountTagStat::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

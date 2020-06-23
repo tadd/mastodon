@@ -1,0 +1,15 @@
+module UserRoles
+  extend ActiveSupport::Concern
+
+  def staff?: () -> untyped
+
+  def role=: (untyped value) -> untyped
+
+  def role: () -> untyped
+
+  def role?: (untyped role) -> untyped
+
+  def promote!: () -> untyped
+
+  def demote!: () -> untyped
+end

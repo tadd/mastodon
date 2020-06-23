@@ -1,0 +1,29 @@
+class Invite < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Invite, Invite::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor user_id (): Integer
+  attr_accessor code (): String
+  attr_accessor expires_at (): Time
+  attr_accessor max_uses (): Integer
+  attr_accessor uses (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor autofollow (): TrueClass | FalseClass
+  attr_accessor comment (): String
+  def users: () -> User::ActiveRecord_Associations_CollectionProxy
+
+  def user: () -> User
+
+  def self.available: () -> Invite::ActiveRecord_Relation
+end
+
+class Invite::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[Invite]
+  include Enumerable[Invite, self]
+
+  def available: () -> Invite::ActiveRecord_Relation
+end
+
+class Invite::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end

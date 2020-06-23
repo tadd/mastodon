@@ -1,0 +1,37 @@
+class PreviewCard < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[PreviewCard, PreviewCard::ActiveRecord_Relation]
+
+  attr_accessor id (): Integer
+  attr_accessor url (): String
+  attr_accessor title (): String
+  attr_accessor description (): String
+  attr_accessor image_file_name (): String
+  attr_accessor image_content_type (): String
+  attr_accessor image_file_size (): Integer
+  attr_accessor image_updated_at (): Time
+  attr_accessor type (): Integer
+  attr_accessor html (): String
+  attr_accessor author_name (): String
+  attr_accessor author_url (): String
+  attr_accessor provider_name (): String
+  attr_accessor provider_url (): String
+  attr_accessor width (): Integer
+  attr_accessor height (): Integer
+  attr_accessor created_at (): Time
+  attr_accessor updated_at (): Time
+  attr_accessor embed_url (): String
+  attr_accessor image_storage_schema_version (): Integer
+  attr_accessor blurhash (): String
+
+  def self.cached: () -> PreviewCard::ActiveRecord_Relation
+end
+
+class PreviewCard::ActiveRecord_Relation < ActiveRecord::Relation
+  include _ActiveRecord_Relation[PreviewCard]
+  include Enumerable[PreviewCard, self]
+
+  def cached: () -> PreviewCard::ActiveRecord_Relation
+end
+
+class PreviewCard::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
