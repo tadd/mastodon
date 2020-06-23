@@ -150,6 +150,10 @@ group :development do
   gem 'capistrano-yarn', '~> 2.0'
 
   gem 'stackprof'
+
+  gem 'rbs', path: '../rbs'
+  gem 'rbs_rails', path: '../rbs_rails'
+  gem 'steep', path: '../steep'
 end
 
 group :production do
