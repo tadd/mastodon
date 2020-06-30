@@ -152,9 +152,9 @@ group :development do
 
   gem 'stackprof'
 
-  gem 'rbs', path: '../rbs'
+  gem 'rbs', '~> 0.3'
   gem 'rbs_rails', path: '../rbs_rails'
-  gem 'steep', path: '../steep'
+  gem 'steep', '~> 0.17'
 end
 
 group :production do
