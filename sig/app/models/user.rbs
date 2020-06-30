@@ -43,7 +43,7 @@ class User < ApplicationRecord
   attr_accessor moderator (): TrueClass | FalseClass
   attr_accessor invite_id (): Integer
   attr_accessor remember_token (): String
-  attr_accessor chosen_languages (): String
+  attr_accessor chosen_languages (): Array[String]?
   attr_accessor created_by_application_id (): Integer
   attr_accessor approved (): TrueClass | FalseClass
   attr_accessor sign_in_token (): String
