@@ -24,7 +24,7 @@ class User < ApplicationRecord
   attr_accessor last_sign_in_at (): Time
   attr_accessor current_sign_in_ip (): IPAddr
   attr_accessor last_sign_in_ip (): IPAddr
-  attr_accessor admin (): TrueClass | FalseClass
+  attr_accessor admin (): bool
   attr_accessor confirmation_token (): String
   attr_accessor confirmed_at (): Time
   attr_accessor confirmation_sent_at (): Time
@@ -34,18 +34,18 @@ class User < ApplicationRecord
   attr_accessor encrypted_otp_secret_iv (): String
   attr_accessor encrypted_otp_secret_salt (): String
   attr_accessor consumed_timestep (): Integer
-  attr_accessor otp_required_for_login (): TrueClass | FalseClass
+  attr_accessor otp_required_for_login (): bool
   attr_accessor last_emailed_at (): Time
   attr_accessor otp_backup_codes (): String
   attr_accessor filtered_languages (): String
   attr_accessor account_id (): Integer
-  attr_accessor disabled (): TrueClass | FalseClass
-  attr_accessor moderator (): TrueClass | FalseClass
+  attr_accessor disabled (): bool
+  attr_accessor moderator (): bool
   attr_accessor invite_id (): Integer
   attr_accessor remember_token (): String
   attr_accessor chosen_languages (): Array[String]?
   attr_accessor created_by_application_id (): Integer
-  attr_accessor approved (): TrueClass | FalseClass
+  attr_accessor approved (): bool
   attr_accessor sign_in_token (): String
   attr_accessor sign_in_token_sent_at (): Time
 
