@@ -81,6 +81,7 @@ class User < ApplicationRecord
   def aggregates_reblogs?: () -> bool
   def shows_application?: () -> bool
   def token_for_app: (untyped a) -> (nil | untyped) # Dk::AccessToken
+  def activate_session: (untyped) -> bool
   def clear_other_sessions: (untyped id) -> untyped
   def session_active?: (untyped id) ->bool
   def web_push_subscription: (untyped session) -> untyped
