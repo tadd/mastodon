@@ -379,8 +379,8 @@ class User < ApplicationRecord
   end
 
   def sanitize_languages
-    return if chosen_languages.nil?
-    # @type var chosen_languages: Array[String]
+    chosen_languages = chosen_languages()
+    return unless chosen_languages
     chosen_languages.reject!(&:blank?)
     self.chosen_languages = nil if chosen_languages.empty?
   end
