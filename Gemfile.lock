@@ -34,23 +34,6 @@ PATH
     rbs_rails (0.2.0)
       parser
 
-PATH
-  remote: ../rbs
-  specs:
-    rbs (0.4.0)
-
-PATH
-  remote: ../steep
-  specs:
-    steep (0.17.1)
-      activesupport (>= 5.1)
-      ast_utils (~> 0.3.0)
-      language_server-protocol (~> 3.14.0.2)
-      listen (~> 3.1)
-      parser (~> 2.7.0)
-      rainbow (>= 2.2.2, < 4.0)
-      rbs (>= 0.3.1, < 0.5.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -517,6 +500,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rbs (0.4.0)
     rdf (3.1.4)
       hamster (~> 3.0)
       link_header (~> 0.0, >= 0.0.8)
@@ -640,6 +624,14 @@ GEM
       net-ssh (>= 2.8.0)
     stackprof (0.2.15)
     statsd-ruby (1.4.0)
+    steep (0.17.1)
+      activesupport (>= 5.1)
+      ast_utils (~> 0.3.0)
+      language_server-protocol (~> 3.14.0.2)
+      listen (~> 3.1)
+      parser (~> 2.7.0)
+      rainbow (>= 2.2.2, < 4.0)
+      rbs (>= 0.3.1, < 0.5.0)
     stoplight (2.2.0)
     streamio-ffmpeg (3.0.2)
       multi_json (~> 1.8)
@@ -796,7 +788,7 @@ DEPENDENCIES
   rails-controller-testing (~> 1.0)
   rails-i18n (~> 5.1)
   rails-settings-cached (~> 0.6)
-  rbs!
+  rbs (~> 0.3)
   rbs_rails!
   rdf-normalize (~> 0.4)
   redis (~> 4.2)
@@ -820,7 +812,7 @@ DEPENDENCIES
   sprockets (~> 3.7.2)
   sprockets-rails (~> 3.2)
   stackprof
-  steep!
+  steep (~> 0.17)
   stoplight (~> 2.2.0)
   streamio-ffmpeg (~> 3.0)
   strong_migrations (~> 0.6)
