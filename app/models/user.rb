@@ -314,7 +314,7 @@ class User < ApplicationRecord
       arr << [current_sign_in_at, current_sign_in_ip] if current_sign_in_ip.present?
       arr << [last_sign_in_at, last_sign_in_ip] if last_sign_in_ip.present?
 
-      arr.sort_by { |pair| pair.first || Time.now.utc }.uniq(&:last).reverse!
+      arr.sort_by { |pair| pair.first || Time.now.utc }.uniq { |pr| pr.last }.reverse!
     end
   end
 
@@ -344,7 +344,7 @@ class User < ApplicationRecord
   private
 
   def recent_ip?(ip)
-    recent_ips.any? { |(_, recent_ip)| recent_ip == ip }
+    recent_ips.any? { |_, recent_ip| recent_ip == ip }
   end
 
   def send_pending_devise_notifications
