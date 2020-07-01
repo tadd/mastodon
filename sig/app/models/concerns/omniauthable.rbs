@@ -12,6 +12,8 @@ module Omniauthable
   def user_params_from_auth: (untyped email, untyped auth) -> { email: untyped, password: untyped, agreement: ::TrueClass, external: ::TrueClass, account_attributes: { username: untyped, display_name: untyped } }
 
   def ensure_unique_username: (untyped starting_username) -> untyped
+
+  def skip_confirmation!: () -> void
 end
 
 Omniauthable::TEMP_EMAIL_PREFIX: ::String

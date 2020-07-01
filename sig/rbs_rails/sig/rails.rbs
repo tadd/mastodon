@@ -2,10 +2,19 @@ module Rails
   def self.root: () -> Pathname
   def self.application: () -> Rails::Application
   def self.env: () -> ActiveSupport::StringInquirer
+  def self.configuration: () -> Rails::Application::Configuration
 end
 
 class Rails::Application
   def routes: () -> untyped
+end
+
+class Rails::Application::Configuration
+  def x: () -> Rails::Application::Configuration::Custom
+end
+
+class Rails::Application::Configuration::Custom
+  def otp_secret: () -> String
 end
 
 class Rails::Railtie

@@ -35,11 +35,13 @@ class User < ApplicationRecord
   attr_accessor encrypted_otp_secret_salt (): String
   attr_accessor consumed_timestep (): Integer
   attr_accessor otp_required_for_login (): bool
+  attr_accessor otp_required_for_login? (): bool
   attr_accessor last_emailed_at (): Time
   attr_accessor otp_backup_codes (): String
   attr_accessor filtered_languages (): String
   attr_accessor account_id (): Integer
   attr_accessor disabled (): bool
+  attr_accessor disabled? (): bool
   attr_accessor moderator (): bool
   attr_accessor invite_id (): Integer
   attr_accessor remember_token (): String
@@ -48,9 +50,11 @@ class User < ApplicationRecord
   attr_accessor approved (): bool
   attr_accessor sign_in_token (): String
   attr_accessor sign_in_token_sent_at (): Time
+  attr_accessor invite (): Invite?
 
   attr_reader invite_code: String
-  attr_reader sign_in_token_attempt: untyped
+  attr_reader sign_in_token_attempt: String
+  attr_reader devise_mailer: Devise::Mailer
 
   attr_writer external: bool
 
@@ -61,7 +65,6 @@ class User < ApplicationRecord
   def session_activations: () -> SessionActivation::ActiveRecord_Associations_CollectionProxy
   def invite_request: () -> UserInviteRequest
   def account: () -> Account
-  def invite: () -> Invite
   def created_by_application: () -> Doorkeeper::Application
 
   def active_for_authentication?: () -> bool
@@ -70,7 +73,7 @@ class User < ApplicationRecord
   def unconfirmed_or_pending?: () -> bool
   def inactive_message: () -> Symbol
   def approve!: () -> void
-  def update_tracked_fields!: (untyped) -> void
+  def update_tracked_fields!: (Rack::Request) -> void
   def disable_two_factor!: () -> void
   def setting_default_privacy: () -> String
   def allows_digest_emails?: () -> bool
@@ -80,14 +83,14 @@ class User < ApplicationRecord
   def hides_network?: () -> bool
   def aggregates_reblogs?: () -> bool
   def shows_application?: () -> bool
-  def token_for_app: (untyped a) -> (nil | untyped) # Dk::AccessToken
-  def activate_session: (untyped) -> bool
-  def clear_other_sessions: (untyped id) -> untyped
-  def session_active?: (untyped id) ->bool
-  def web_push_subscription: (untyped session) -> untyped
+  def token_for_app: (Doorkeeper::Application a) -> (nil | untyped)
+  def activate_session: (Rack::Request) -> bool
+  def clear_other_sessions: (String id) -> void
+  def session_active?: (String id) -> bool
+  def web_push_subscription: (SessionActivation session) -> Web::PushSubscription?
   def invite_code=: (String) -> String
   def password_required?: () -> bool
-  def external_or_valid_password?: (untyped compare_password) -> bool
+  def external_or_valid_password?: (String compare_password) -> bool
   def send_reset_password_instructions: () -> (false | untyped)
   def reset_password!: (String, String) -> void
   def show_all_media?: () -> bool
@@ -95,11 +98,11 @@ class User < ApplicationRecord
   def recent_ips: () -> Array[[Time, IPAddr]]
   def sign_in_token_expired?: () -> bool
   def generate_sign_in_token: () -> void
-  def send_devise_notification: (untyped notification, *untyped args) -> void
+  def send_devise_notification: (Notification notification, *untyped args) -> void
   def recent_ip?: (IPAddr ip) -> bool
-  def send_pending_devise_notifications: () -> untyped
-  def pending_devise_notifications: () -> untyped
-  def render_and_send_devise_message: (untyped notification, *untyped args) -> untyped
+  def send_pending_devise_notifications: () -> void
+  def pending_devise_notifications: () -> Array[[Notification, untyped]]
+  def render_and_send_devise_message: (Notification notification, *untyped) -> void
   def set_approved: () -> void
   def open_registrations?: () -> bool
   def external?: () -> bool
@@ -111,6 +114,11 @@ class User < ApplicationRecord
   def needs_feed_update?: () -> bool
   def validate_email_dns?: () -> bool
   def approved?: () -> bool
+  def confirmed?: () -> bool
+  def valid_invitation?: () -> bool
+  def valid_password?: (String) -> bool
+  def setting_display_media: () -> String
+  def email_changed?:() -> bool
 
   def self.recent: () -> User::ActiveRecord_Relation
   def self.pending: () -> User::ActiveRecord_Relation
@@ -120,9 +128,13 @@ class User < ApplicationRecord
   def self.disabled: () -> User::ActiveRecord_Relation
   def self.inactive: () -> User::ActiveRecord_Relation
   def self.active: () -> User::ActiveRecord_Relation
-  def self.matches_email: (untyped) -> User::ActiveRecord_Relation
-  def self.matches_ip: (untyped) -> User::ActiveRecord_Relation
+  def self.matches_email: (String) -> User::ActiveRecord_Relation
+  def self.matches_ip: (IPAddr) -> User::ActiveRecord_Relation
   def self.emailable: () -> User::ActiveRecord_Relation
+  def self.devise: (*untyped) -> void
+  def self.admins: () -> User::ActiveRecord_Relation
+  def self.moderators: () -> User::ActiveRecord_Relation
+  def self.staff: () -> User::ActiveRecord_Relation
 end
 
 User::ACTIVE_DURATION: ActiveSupport::Duration
@@ -139,8 +151,8 @@ class User::ActiveRecord_Relation < ActiveRecord::Relation
   def disabled: () -> User::ActiveRecord_Relation
   def inactive: () -> User::ActiveRecord_Relation
   def active: () -> User::ActiveRecord_Relation
-  def matches_email: (untyped) -> User::ActiveRecord_Relation
-  def matches_ip: (untyped) -> User::ActiveRecord_Relation
+  def matches_email: (String) -> User::ActiveRecord_Relation
+  def matches_ip: (IPAddr) -> User::ActiveRecord_Relation
   def emailable: () -> User::ActiveRecord_Relation
 end
 

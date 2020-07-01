@@ -9,6 +9,8 @@ class Setting < ApplicationRecord
   attr_accessor updated_at (): Time
   attr_accessor thing_id (): Integer
 
+  def self.registrations_mode: () -> String
+
   def thing: () -> untyped
 end
 
