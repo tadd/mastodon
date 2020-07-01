@@ -1,0 +1,4 @@
+class Rack::Request
+  def user_agent: () -> String
+  def remote_ip: () -> IPAddr
+end
