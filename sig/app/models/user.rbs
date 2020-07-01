@@ -83,7 +83,7 @@ class User < ApplicationRecord
   def hides_network?: () -> bool
   def aggregates_reblogs?: () -> bool
   def shows_application?: () -> bool
-  def token_for_app: (Doorkeeper::Application a) -> (nil | untyped)
+  def token_for_app: (Doorkeeper::Application) -> void
   def activate_session: (Rack::Request) -> bool
   def clear_other_sessions: (String id) -> void
   def session_active?: (String id) -> bool
@@ -131,7 +131,9 @@ class User < ApplicationRecord
   def self.matches_email: (String) -> User::ActiveRecord_Relation
   def self.matches_ip: (IPAddr) -> User::ActiveRecord_Relation
   def self.emailable: () -> User::ActiveRecord_Relation
-  def self.devise: (*untyped) -> void
+  def self.devise: (*Symbol) -> void
+                 | (Symbol, ?otp_secret_encryption_key: String) -> void
+                 | (Symbol, ?otp_number_of_backup_codes: Integer) -> void
   def self.admins: () -> User::ActiveRecord_Relation
   def self.moderators: () -> User::ActiveRecord_Relation
   def self.staff: () -> User::ActiveRecord_Relation
