@@ -1615,7 +1615,7 @@ module ActiveSupport::Concern
   # Evaluate given block in context of base class,
   # so that you can write class macros here.
   # When you define more than one +included+ block, it raises an exception.
-  def included: (?untyped? base) { () -> untyped } -> untyped
+  def included: (?untyped? base) ?{ () -> untyped } -> untyped
 
   # Define class methods from given block.
   # You can define private class methods as well.

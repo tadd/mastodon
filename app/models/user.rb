@@ -127,7 +127,9 @@ class User < ApplicationRecord
   end
 
   def valid_invitation?
-    invite_id.present? && invite.valid_for_use?
+    invite = invite()
+    return unless invite
+    invite.valid_for_use?
   end
 
   def disable!

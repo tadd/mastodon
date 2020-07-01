@@ -27,6 +27,7 @@ class Account < ApplicationRecord
   attr_accessor avatar_remote_url (): String
   attr_accessor subscription_expires_at (): Time
   attr_accessor locked (): TrueClass | FalseClass
+  attr_accessor locked? (): TrueClass | FalseClass
   attr_accessor header_remote_url (): String
   attr_accessor last_webfingered_at (): Time
   attr_accessor inbox_url (): String
@@ -96,6 +97,7 @@ class Account < ApplicationRecord
   def user: () -> User
   def account_stat: () -> AccountStat
   def moved_to_account: () -> Account
+  def suspended?: () -> bool
 
   def self.remote: () -> Account::ActiveRecord_Relation
   def self.local: () -> Account::ActiveRecord_Relation
