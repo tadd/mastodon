@@ -5,6 +5,11 @@ module Rails
   def self.configuration: () -> Rails::Application::Configuration
 end
 
+extension ActiveSupport::StringInquirer (Rails)
+  def test?: () -> bool
+  def development?: () -> bool
+end
+
 class Rails::Application
   def routes: () -> untyped
 end

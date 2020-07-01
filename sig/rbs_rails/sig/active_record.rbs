@@ -10,6 +10,10 @@ class ActiveRecord::Base
   def self.validate: (*untyped) -> void
   def self.validates: (*untyped) -> void
   def self.enum: (Hash[Symbol, untyped]) -> void
+  def self.accepts_nested_attributes_for: (Symbol, ?reject_if: ^(Hash[String, String]) -> bool) -> void
+  def self.validates_with: (ActiveModel::Validator, ?on: Symbol, ?if: Symbol) -> void
+  def self.attribute: (*Symbol) -> void
+  def self.arel_table: () -> untyped
 
   # callbacks
   def self.after_commit: (*untyped) -> void
@@ -66,7 +70,7 @@ interface _ActiveRecord_Relation[Model]
   def group: (*Symbol | String) -> untyped
   def distinct: () -> self
   def or: (self) -> self
-  def merge: (self) -> self
+  def merge: (_ActiveRecord_Relation[ActiveRecord::Base]) -> self
   def joins: (*String | Symbol) -> self
            | (Hash[untyped, untyped]) -> self
   def left_joins: (*String | Symbol) -> self
