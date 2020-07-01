@@ -1,2 +1,2 @@
-class Devise::Mailer
+class Devise::Mailer < ActionMailer::Base
 end

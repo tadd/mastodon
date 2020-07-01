@@ -54,7 +54,7 @@ class User < ApplicationRecord
 
   attr_reader invite_code: String
   attr_reader sign_in_token_attempt: String
-  attr_reader devise_mailer: Devise::Mailer
+  attr_reader devise_mailer: UserMailer
 
   attr_writer external: bool
 
@@ -98,11 +98,11 @@ class User < ApplicationRecord
   def recent_ips: () -> Array[[Time, IPAddr]]
   def sign_in_token_expired?: () -> bool
   def generate_sign_in_token: () -> void
-  def send_devise_notification: (Notification notification, *untyped args) -> void
+  def send_devise_notification: (Symbol, *untyped args) -> void
   def recent_ip?: (IPAddr ip) -> bool
   def send_pending_devise_notifications: () -> void
-  def pending_devise_notifications: () -> Array[[Notification, untyped]]
-  def render_and_send_devise_message: (Notification notification, *untyped) -> void
+  def pending_devise_notifications: () -> Array[[Symbol, untyped]]
+  def render_and_send_devise_message: (Symbol, *untyped) -> void
   def set_approved: () -> void
   def open_registrations?: () -> bool
   def external?: () -> bool

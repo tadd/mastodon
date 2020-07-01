@@ -1,0 +1,25 @@
+class UserMailer < Devise::Mailer
+  def self.welcome: (User) -> instance
+
+  def confirmation_instructions: (User, untyped token) -> (nil | untyped)
+
+  def reset_password_instructions: (User, untyped token) -> (nil | untyped)
+
+  def password_change: (User) -> (nil | untyped)
+
+  def email_changed: (User) -> (nil | untyped)
+
+  def two_factor_enabled: (User) -> (nil | untyped)
+
+  def two_factor_disabled: (User) -> (nil | untyped)
+
+  def two_factor_recovery_codes_changed: (User) -> (nil | untyped)
+
+  def welcome: (User) -> (nil | untyped)
+
+  def backup_ready: (User, untyped backup) -> (nil | untyped)
+
+  def warning: (User, untyped warning, ?untyped? status_ids) -> untyped
+
+  def sign_in_token: (User, untyped remote_ip, untyped user_agent, untyped timestamp) -> (nil | untyped)
+end
