@@ -19,7 +19,12 @@ end
 class SessionActivation::ActiveRecord_Relation < ActiveRecord::Relation
   include _ActiveRecord_Relation[SessionActivation]
   include Enumerable[SessionActivation, self]
+
 end
 
 class SessionActivation::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+  def activate: (untyped) -> SessionActivation
+  def exclusive: (String) -> void
+  def active?: (String) -> bool
+  def each: () { (SessionActivation) -> void } -> void
 end
