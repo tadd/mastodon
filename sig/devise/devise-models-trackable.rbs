@@ -1,0 +1,3 @@
+class Devise::Models::Trackable
+  def update_tracked_fields!: (Rack::Request) -> void
+end

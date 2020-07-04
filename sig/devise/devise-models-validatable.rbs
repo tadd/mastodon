@@ -1,0 +1,3 @@
+class Devise::Models::Validatable
+  def password_required?: () -> bool
+end

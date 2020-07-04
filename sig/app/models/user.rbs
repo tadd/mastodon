@@ -11,6 +11,14 @@ class User < ApplicationRecord
 
   include LdapAuthenticable
 
+  include Devise::Models::Authenticatable
+
+  include Devise::Models::Trackable
+
+  include Devise::Models::Validatable
+
+  include Devise::Models::Recoverable
+
   attr_accessor id (): Integer
   attr_accessor email (): String
   attr_accessor created_at (): Time
@@ -91,7 +99,7 @@ class User < ApplicationRecord
   def invite_code=: (String) -> String
   def password_required?: () -> bool
   def external_or_valid_password?: (String compare_password) -> bool
-  def send_reset_password_instructions: () -> (false | untyped)
+  def send_reset_password_instructions: () -> (String | false)
   def reset_password!: (String, String) -> void
   def show_all_media?: () -> bool
   def hide_all_media?: () -> bool
@@ -101,7 +109,7 @@ class User < ApplicationRecord
   def send_devise_notification: (Symbol, *untyped args) -> void
   def recent_ip?: (IPAddr ip) -> bool
   def send_pending_devise_notifications: () -> void
-  def pending_devise_notifications: () -> Array[[Symbol, untyped]]
+  def pending_devise_notifications: () -> Array[[Symbol, Array[untyped]]]
   def render_and_send_devise_message: (Symbol, *untyped) -> void
   def set_approved: () -> void
   def open_registrations?: () -> bool
