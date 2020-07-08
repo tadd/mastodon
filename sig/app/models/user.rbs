@@ -20,44 +20,417 @@ class User < ApplicationRecord
   include Devise::Models::Recoverable
 
   attr_accessor id (): Integer
+  def id_changed?: () -> bool
+  def id_change: () -> [Integer?, Integer?]
+  def id_will_change!: () -> void
+  def id_was: () -> Integer?
+  def id_previously_changed?: () -> bool
+  def id_previous_change: () -> Array[Integer?]?
+  def id_previously_was: () -> Integer?
+  def restore_id!: () -> void
+  def clear_id_change: () -> void
+
   attr_accessor email (): String
+  def email_changed?: () -> bool
+  def email_change: () -> [String?, String?]
+  def email_will_change!: () -> void
+  def email_was: () -> String?
+  def email_previously_changed?: () -> bool
+  def email_previous_change: () -> Array[String?]?
+  def email_previously_was: () -> String?
+  def restore_email!: () -> void
+  def clear_email_change: () -> void
+
   attr_accessor created_at (): Time
+  def created_at_changed?: () -> bool
+  def created_at_change: () -> [Time?, Time?]
+  def created_at_will_change!: () -> void
+  def created_at_was: () -> Time?
+  def created_at_previously_changed?: () -> bool
+  def created_at_previous_change: () -> Array[Time?]?
+  def created_at_previously_was: () -> Time?
+  def restore_created_at!: () -> void
+  def clear_created_at_change: () -> void
+
   attr_accessor updated_at (): Time
+  def updated_at_changed?: () -> bool
+  def updated_at_change: () -> [Time?, Time?]
+  def updated_at_will_change!: () -> void
+  def updated_at_was: () -> Time?
+  def updated_at_previously_changed?: () -> bool
+  def updated_at_previous_change: () -> Array[Time?]?
+  def updated_at_previously_was: () -> Time?
+  def restore_updated_at!: () -> void
+  def clear_updated_at_change: () -> void
+
   attr_accessor encrypted_password (): String
+  def encrypted_password_changed?: () -> bool
+  def encrypted_password_change: () -> [String?, String?]
+  def encrypted_password_will_change!: () -> void
+  def encrypted_password_was: () -> String?
+  def encrypted_password_previously_changed?: () -> bool
+  def encrypted_password_previous_change: () -> Array[String?]?
+  def encrypted_password_previously_was: () -> String?
+  def restore_encrypted_password!: () -> void
+  def clear_encrypted_password_change: () -> void
+
   attr_accessor reset_password_token (): String
+  def reset_password_token_changed?: () -> bool
+  def reset_password_token_change: () -> [String?, String?]
+  def reset_password_token_will_change!: () -> void
+  def reset_password_token_was: () -> String?
+  def reset_password_token_previously_changed?: () -> bool
+  def reset_password_token_previous_change: () -> Array[String?]?
+  def reset_password_token_previously_was: () -> String?
+  def restore_reset_password_token!: () -> void
+  def clear_reset_password_token_change: () -> void
+
   attr_accessor reset_password_sent_at (): Time
+  def reset_password_sent_at_changed?: () -> bool
+  def reset_password_sent_at_change: () -> [Time?, Time?]
+  def reset_password_sent_at_will_change!: () -> void
+  def reset_password_sent_at_was: () -> Time?
+  def reset_password_sent_at_previously_changed?: () -> bool
+  def reset_password_sent_at_previous_change: () -> Array[Time?]?
+  def reset_password_sent_at_previously_was: () -> Time?
+  def restore_reset_password_sent_at!: () -> void
+  def clear_reset_password_sent_at_change: () -> void
+
   attr_accessor remember_created_at (): Time
+  def remember_created_at_changed?: () -> bool
+  def remember_created_at_change: () -> [Time?, Time?]
+  def remember_created_at_will_change!: () -> void
+  def remember_created_at_was: () -> Time?
+  def remember_created_at_previously_changed?: () -> bool
+  def remember_created_at_previous_change: () -> Array[Time?]?
+  def remember_created_at_previously_was: () -> Time?
+  def restore_remember_created_at!: () -> void
+  def clear_remember_created_at_change: () -> void
+
   attr_accessor sign_in_count (): Integer
+  def sign_in_count_changed?: () -> bool
+  def sign_in_count_change: () -> [Integer?, Integer?]
+  def sign_in_count_will_change!: () -> void
+  def sign_in_count_was: () -> Integer?
+  def sign_in_count_previously_changed?: () -> bool
+  def sign_in_count_previous_change: () -> Array[Integer?]?
+  def sign_in_count_previously_was: () -> Integer?
+  def restore_sign_in_count!: () -> void
+  def clear_sign_in_count_change: () -> void
+
   attr_accessor current_sign_in_at (): Time
+  def current_sign_in_at_changed?: () -> bool
+  def current_sign_in_at_change: () -> [Time?, Time?]
+  def current_sign_in_at_will_change!: () -> void
+  def current_sign_in_at_was: () -> Time?
+  def current_sign_in_at_previously_changed?: () -> bool
+  def current_sign_in_at_previous_change: () -> Array[Time?]?
+  def current_sign_in_at_previously_was: () -> Time?
+  def restore_current_sign_in_at!: () -> void
+  def clear_current_sign_in_at_change: () -> void
+
   attr_accessor last_sign_in_at (): Time
+  def last_sign_in_at_changed?: () -> bool
+  def last_sign_in_at_change: () -> [Time?, Time?]
+  def last_sign_in_at_will_change!: () -> void
+  def last_sign_in_at_was: () -> Time?
+  def last_sign_in_at_previously_changed?: () -> bool
+  def last_sign_in_at_previous_change: () -> Array[Time?]?
+  def last_sign_in_at_previously_was: () -> Time?
+  def restore_last_sign_in_at!: () -> void
+  def clear_last_sign_in_at_change: () -> void
+
   attr_accessor current_sign_in_ip (): IPAddr
+  def current_sign_in_ip_changed?: () -> bool
+  def current_sign_in_ip_change: () -> [IPAddr?, IPAddr?]
+  def current_sign_in_ip_will_change!: () -> void
+  def current_sign_in_ip_was: () -> IPAddr?
+  def current_sign_in_ip_previously_changed?: () -> bool
+  def current_sign_in_ip_previous_change: () -> Array[IPAddr?]?
+  def current_sign_in_ip_previously_was: () -> IPAddr?
+  def restore_current_sign_in_ip!: () -> void
+  def clear_current_sign_in_ip_change: () -> void
+
   attr_accessor last_sign_in_ip (): IPAddr
+  def last_sign_in_ip_changed?: () -> bool
+  def last_sign_in_ip_change: () -> [IPAddr?, IPAddr?]
+  def last_sign_in_ip_will_change!: () -> void
+  def last_sign_in_ip_was: () -> IPAddr?
+  def last_sign_in_ip_previously_changed?: () -> bool
+  def last_sign_in_ip_previous_change: () -> Array[IPAddr?]?
+  def last_sign_in_ip_previously_was: () -> IPAddr?
+  def restore_last_sign_in_ip!: () -> void
+  def clear_last_sign_in_ip_change: () -> void
+
   attr_accessor admin (): bool
+  def admin_changed?: () -> bool
+  def admin_change: () -> [(TrueClass | FalseClass)?, (TrueClass | FalseClass)?]
+  def admin_will_change!: () -> void
+  def admin_was: () -> (TrueClass | FalseClass)?
+  def admin_previously_changed?: () -> bool
+  def admin_previous_change: () -> Array[(TrueClass | FalseClass)?]?
+  def admin_previously_was: () -> (TrueClass | FalseClass)?
+  def restore_admin!: () -> void
+  def clear_admin_change: () -> void
+  attr_accessor admin? (): TrueClass | FalseClass
+
   attr_accessor confirmation_token (): String
+  def confirmation_token_changed?: () -> bool
+  def confirmation_token_change: () -> [String?, String?]
+  def confirmation_token_will_change!: () -> void
+  def confirmation_token_was: () -> String?
+  def confirmation_token_previously_changed?: () -> bool
+  def confirmation_token_previous_change: () -> Array[String?]?
+  def confirmation_token_previously_was: () -> String?
+  def restore_confirmation_token!: () -> void
+  def clear_confirmation_token_change: () -> void
+
   attr_accessor confirmed_at (): Time
+  def confirmed_at_changed?: () -> bool
+  def confirmed_at_change: () -> [Time?, Time?]
+  def confirmed_at_will_change!: () -> void
+  def confirmed_at_was: () -> Time?
+  def confirmed_at_previously_changed?: () -> bool
+  def confirmed_at_previous_change: () -> Array[Time?]?
+  def confirmed_at_previously_was: () -> Time?
+  def restore_confirmed_at!: () -> void
+  def clear_confirmed_at_change: () -> void
+
   attr_accessor confirmation_sent_at (): Time
+  def confirmation_sent_at_changed?: () -> bool
+  def confirmation_sent_at_change: () -> [Time?, Time?]
+  def confirmation_sent_at_will_change!: () -> void
+  def confirmation_sent_at_was: () -> Time?
+  def confirmation_sent_at_previously_changed?: () -> bool
+  def confirmation_sent_at_previous_change: () -> Array[Time?]?
+  def confirmation_sent_at_previously_was: () -> Time?
+  def restore_confirmation_sent_at!: () -> void
+  def clear_confirmation_sent_at_change: () -> void
+
   attr_accessor unconfirmed_email (): String
+  def unconfirmed_email_changed?: () -> bool
+  def unconfirmed_email_change: () -> [String?, String?]
+  def unconfirmed_email_will_change!: () -> void
+  def unconfirmed_email_was: () -> String?
+  def unconfirmed_email_previously_changed?: () -> bool
+  def unconfirmed_email_previous_change: () -> Array[String?]?
+  def unconfirmed_email_previously_was: () -> String?
+  def restore_unconfirmed_email!: () -> void
+  def clear_unconfirmed_email_change: () -> void
+
   attr_accessor locale (): String
+  def locale_changed?: () -> bool
+  def locale_change: () -> [String?, String?]
+  def locale_will_change!: () -> void
+  def locale_was: () -> String?
+  def locale_previously_changed?: () -> bool
+  def locale_previous_change: () -> Array[String?]?
+  def locale_previously_was: () -> String?
+  def restore_locale!: () -> void
+  def clear_locale_change: () -> void
+
   attr_accessor encrypted_otp_secret (): String
+  def encrypted_otp_secret_changed?: () -> bool
+  def encrypted_otp_secret_change: () -> [String?, String?]
+  def encrypted_otp_secret_will_change!: () -> void
+  def encrypted_otp_secret_was: () -> String?
+  def encrypted_otp_secret_previously_changed?: () -> bool
+  def encrypted_otp_secret_previous_change: () -> Array[String?]?
+  def encrypted_otp_secret_previously_was: () -> String?
+  def restore_encrypted_otp_secret!: () -> void
+  def clear_encrypted_otp_secret_change: () -> void
+
   attr_accessor encrypted_otp_secret_iv (): String
+  def encrypted_otp_secret_iv_changed?: () -> bool
+  def encrypted_otp_secret_iv_change: () -> [String?, String?]
+  def encrypted_otp_secret_iv_will_change!: () -> void
+  def encrypted_otp_secret_iv_was: () -> String?
+  def encrypted_otp_secret_iv_previously_changed?: () -> bool
+  def encrypted_otp_secret_iv_previous_change: () -> Array[String?]?
+  def encrypted_otp_secret_iv_previously_was: () -> String?
+  def restore_encrypted_otp_secret_iv!: () -> void
+  def clear_encrypted_otp_secret_iv_change: () -> void
+
   attr_accessor encrypted_otp_secret_salt (): String
+  def encrypted_otp_secret_salt_changed?: () -> bool
+  def encrypted_otp_secret_salt_change: () -> [String?, String?]
+  def encrypted_otp_secret_salt_will_change!: () -> void
+  def encrypted_otp_secret_salt_was: () -> String?
+  def encrypted_otp_secret_salt_previously_changed?: () -> bool
+  def encrypted_otp_secret_salt_previous_change: () -> Array[String?]?
+  def encrypted_otp_secret_salt_previously_was: () -> String?
+  def restore_encrypted_otp_secret_salt!: () -> void
+  def clear_encrypted_otp_secret_salt_change: () -> void
+
   attr_accessor consumed_timestep (): Integer
+  def consumed_timestep_changed?: () -> bool
+  def consumed_timestep_change: () -> [Integer?, Integer?]
+  def consumed_timestep_will_change!: () -> void
+  def consumed_timestep_was: () -> Integer?
+  def consumed_timestep_previously_changed?: () -> bool
+  def consumed_timestep_previous_change: () -> Array[Integer?]?
+  def consumed_timestep_previously_was: () -> Integer?
+  def restore_consumed_timestep!: () -> void
+  def clear_consumed_timestep_change: () -> void
+
   attr_accessor otp_required_for_login (): bool
+  def otp_required_for_login_changed?: () -> bool
+  def otp_required_for_login_change: () -> [(TrueClass | FalseClass)?, (TrueClass | FalseClass)?]
+  def otp_required_for_login_will_change!: () -> void
+  def otp_required_for_login_was: () -> (TrueClass | FalseClass)?
+  def otp_required_for_login_previously_changed?: () -> bool
+  def otp_required_for_login_previous_change: () -> Array[(TrueClass | FalseClass)?]?
+  def otp_required_for_login_previously_was: () -> (TrueClass | FalseClass)?
+  def restore_otp_required_for_login!: () -> void
+  def clear_otp_required_for_login_change: () -> void
   attr_accessor otp_required_for_login? (): bool
+
   attr_accessor last_emailed_at (): Time
+  def last_emailed_at_changed?: () -> bool
+  def last_emailed_at_change: () -> [Time?, Time?]
+  def last_emailed_at_will_change!: () -> void
+  def last_emailed_at_was: () -> Time?
+  def last_emailed_at_previously_changed?: () -> bool
+  def last_emailed_at_previous_change: () -> Array[Time?]?
+  def last_emailed_at_previously_was: () -> Time?
+  def restore_last_emailed_at!: () -> void
+  def clear_last_emailed_at_change: () -> void
+
   attr_accessor otp_backup_codes (): String
+  def otp_backup_codes_changed?: () -> bool
+  def otp_backup_codes_change: () -> [String?, String?]
+  def otp_backup_codes_will_change!: () -> void
+  def otp_backup_codes_was: () -> String?
+  def otp_backup_codes_previously_changed?: () -> bool
+  def otp_backup_codes_previous_change: () -> Array[String?]?
+  def otp_backup_codes_previously_was: () -> String?
+  def restore_otp_backup_codes!: () -> void
+  def clear_otp_backup_codes_change: () -> void
+
   attr_accessor filtered_languages (): String
+  def filtered_languages_changed?: () -> bool
+  def filtered_languages_change: () -> [String?, String?]
+  def filtered_languages_will_change!: () -> void
+  def filtered_languages_was: () -> String?
+  def filtered_languages_previously_changed?: () -> bool
+  def filtered_languages_previous_change: () -> Array[String?]?
+  def filtered_languages_previously_was: () -> String?
+  def restore_filtered_languages!: () -> void
+  def clear_filtered_languages_change: () -> void
+
   attr_accessor account_id (): Integer
+  def account_id_changed?: () -> bool
+  def account_id_change: () -> [Integer?, Integer?]
+  def account_id_will_change!: () -> void
+  def account_id_was: () -> Integer?
+  def account_id_previously_changed?: () -> bool
+  def account_id_previous_change: () -> Array[Integer?]?
+  def account_id_previously_was: () -> Integer?
+  def restore_account_id!: () -> void
+  def clear_account_id_change: () -> void
+
   attr_accessor disabled (): bool
+  def disabled_changed?: () -> bool
+  def disabled_change: () -> [(TrueClass | FalseClass)?, (TrueClass | FalseClass)?]
+  def disabled_will_change!: () -> void
+  def disabled_was: () -> (TrueClass | FalseClass)?
+  def disabled_previously_changed?: () -> bool
+  def disabled_previous_change: () -> Array[(TrueClass | FalseClass)?]?
+  def disabled_previously_was: () -> (TrueClass | FalseClass)?
+  def restore_disabled!: () -> void
+  def clear_disabled_change: () -> void
   attr_accessor disabled? (): bool
+
   attr_accessor moderator (): bool
+  def moderator_changed?: () -> bool
+  def moderator_change: () -> [(TrueClass | FalseClass)?, (TrueClass | FalseClass)?]
+  def moderator_will_change!: () -> void
+  def moderator_was: () -> (TrueClass | FalseClass)?
+  def moderator_previously_changed?: () -> bool
+  def moderator_previous_change: () -> Array[(TrueClass | FalseClass)?]?
+  def moderator_previously_was: () -> (TrueClass | FalseClass)?
+  def restore_moderator!: () -> void
+  def clear_moderator_change: () -> void
+  attr_accessor moderator? (): TrueClass | FalseClass
+
   attr_accessor invite_id (): Integer
+  def invite_id_changed?: () -> bool
+  def invite_id_change: () -> [Integer?, Integer?]
+  def invite_id_will_change!: () -> void
+  def invite_id_was: () -> Integer?
+  def invite_id_previously_changed?: () -> bool
+  def invite_id_previous_change: () -> Array[Integer?]?
+  def invite_id_previously_was: () -> Integer?
+  def restore_invite_id!: () -> void
+  def clear_invite_id_change: () -> void
+
   attr_accessor remember_token (): String
+  def remember_token_changed?: () -> bool
+  def remember_token_change: () -> [String?, String?]
+  def remember_token_will_change!: () -> void
+  def remember_token_was: () -> String?
+  def remember_token_previously_changed?: () -> bool
+  def remember_token_previous_change: () -> Array[String?]?
+  def remember_token_previously_was: () -> String?
+  def restore_remember_token!: () -> void
+  def clear_remember_token_change: () -> void
+
   attr_accessor chosen_languages (): Array[String]?
+  def chosen_languages_changed?: () -> bool
+  def chosen_languages_change: () -> [Array[String]?, Array[String]?]
+  def chosen_languages_will_change!: () -> void
+  def chosen_languages_was: () -> String?
+  def chosen_languages_previously_changed?: () -> bool
+  def chosen_languages_previous_change: () -> Array[Array[String]?]?
+  def chosen_languages_previously_was: () -> Array[String]?
+  def restore_chosen_languages!: () -> void
+  def clear_chosen_languages_change: () -> void
+
   attr_accessor created_by_application_id (): Integer
+  def created_by_application_id_changed?: () -> bool
+  def created_by_application_id_change: () -> [Integer?, Integer?]
+  def created_by_application_id_will_change!: () -> void
+  def created_by_application_id_was: () -> Integer?
+  def created_by_application_id_previously_changed?: () -> bool
+  def created_by_application_id_previous_change: () -> Array[Integer?]?
+  def created_by_application_id_previously_was: () -> Integer?
+  def restore_created_by_application_id!: () -> void
+  def clear_created_by_application_id_change: () -> void
+
   attr_accessor approved (): bool
+  def approved_changed?: () -> bool
+  def approved_change: () -> [(TrueClass | FalseClass)?, (TrueClass | FalseClass)?]
+  def approved_will_change!: () -> void
+  def approved_was: () -> (TrueClass | FalseClass)?
+  def approved_previously_changed?: () -> bool
+  def approved_previous_change: () -> Array[(TrueClass | FalseClass)?]?
+  def approved_previously_was: () -> (TrueClass | FalseClass)?
+  def restore_approved!: () -> void
+  def clear_approved_change: () -> void
+  attr_accessor approved? (): TrueClass | FalseClass
+
   attr_accessor sign_in_token (): String
+  def sign_in_token_changed?: () -> bool
+  def sign_in_token_change: () -> [String?, String?]
+  def sign_in_token_will_change!: () -> void
+  def sign_in_token_was: () -> String?
+  def sign_in_token_previously_changed?: () -> bool
+  def sign_in_token_previous_change: () -> Array[String?]?
+  def sign_in_token_previously_was: () -> String?
+  def restore_sign_in_token!: () -> void
+  def clear_sign_in_token_change: () -> void
+
   attr_accessor sign_in_token_sent_at (): Time
+  def sign_in_token_sent_at_changed?: () -> bool
+  def sign_in_token_sent_at_change: () -> [Time?, Time?]
+  def sign_in_token_sent_at_will_change!: () -> void
+  def sign_in_token_sent_at_was: () -> Time?
+  def sign_in_token_sent_at_previously_changed?: () -> bool
+  def sign_in_token_sent_at_previous_change: () -> Array[Time?]?
+  def sign_in_token_sent_at_previously_was: () -> Time?
+  def restore_sign_in_token_sent_at!: () -> void
+  def clear_sign_in_token_sent_at_change: () -> void
+
   attr_accessor invite (): Invite?
 
   attr_reader invite_code: String
@@ -121,12 +494,10 @@ class User < ApplicationRecord
   def regenerate_feed!: () -> void
   def needs_feed_update?: () -> bool
   def validate_email_dns?: () -> bool
-  def approved?: () -> bool
   def confirmed?: () -> bool
   def valid_invitation?: () -> bool
   def valid_password?: (String) -> bool
   def setting_display_media: () -> String
-  def email_changed?:() -> bool
 
   def self.recent: () -> User::ActiveRecord_Relation
   def self.pending: () -> User::ActiveRecord_Relation
