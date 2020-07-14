@@ -5,7 +5,7 @@ module Rails
   def self.configuration: () -> Rails::Application::Configuration
 end
 
-extension ActiveSupport::StringInquirer (Rails)
+class ActiveSupport::StringInquirer
   def test?: () -> bool
   def development?: () -> bool
 end
