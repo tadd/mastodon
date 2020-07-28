@@ -1076,7 +1076,7 @@ Pathname::SEPARATOR_PAT: Regexp
 
 Pathname::TO_PATH: Symbol
 
-extension Kernel (Pathname)
+module Kernel
   # Creates a new Pathname object from the given string, `path`, and returns
   # pathname object.
   #
